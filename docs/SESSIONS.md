@@ -316,7 +316,7 @@ Le préfixe `!` lance une commande depuis Claude Code. S'il ne marche pas chez v
 
 ### Étape par étape
 
-Poids = taille de contexte estimée de l'étape (léger : 40 k tokens ou moins ; moyen : 44 à 58 k ; lourd : 73 k ou plus). Mettez les étapes lourdes en début de semaine, quand le plafond hebdomadaire est plein.
+Poids = taille de contexte estimée de l'étape (léger : 40 k tokens ou moins ; moyen : 44 à 58 k ; lourd : 73 k ou plus). Les étapes se font dans l'ordre : on ne les réordonne pas, on les espace. Avant une étape lourde (2, 4 ou 9), démarrez dans une fenêtre de 5 heures neuve, et attendez le renouvellement hebdomadaire si le reste de la semaine ne couvre pas la consommation de votre dernière étape de poids comparable (voir le tableau de suivi).
 
 | Étape | Prompt | Poids | Contrôle | À faire de votre côté |
 |---|---|---|---|---|
@@ -338,7 +338,7 @@ Poids = taille de contexte estimée de l'étape (léger : 40 k tokens ou moins ;
 À coller quand le compteur de la fenêtre de 5 heures approche de la limite, avant d'être coupé.
 
 ```text
-Je dois m'arrêter. Termine la modification en cours sans en commencer d'autre. Commite l'état actuel avec le message « wip: étape N » (même si des tests sont rouges), puis ajoute au journal ce qui est fait, ce qui reste, et le test qui échoue s'il y en a un. Réponds en 3 lignes.
+Je dois m'arrêter. Termine la modification en cours sans en commencer d'autre. Ajoute à la fin de docs/JOURNAL.md une note « PAUSE étape N » : ce qui est fait, ce qui reste, le test qui échoue s'il y en a un et la commande qui le lance. Puis commite tout, note du journal comprise, en UN SEUL commit « wip: étape N », même si des tests sont rouges. Ne fais rien d'autre. Réponds en 3 lignes.
 ```
 
 Remplacez N par le numéro de l'étape. Un commit « wip » est une entorse à la règle « tests verts avant commit » : l'étape n'est pas terminée tant que le commit final n'est pas propre.
@@ -348,8 +348,14 @@ Remplacez N par le numéro de l'étape. Un commit « wip » est une entorse à l
 À coller dans une session neuve (après `/clear`), à la place du prompt de l'étape. Remplacez N et NN.
 
 ```text
-Lis CLAUDE.md et docs/JOURNAL.md. L'étape N a été interrompue : le dernier commit est « wip: étape N ». Lis docs/plan/etape-NN.md et uniquement les fichiers de sa section « À lire », puis reprends exactement là où le journal s'arrête et termine l'étape. Quand les tests sont verts, remplace le commit « wip » par un commit propre de l'étape (git reset --soft HEAD~1, puis un seul commit). Ajoute ensuite 5 lignes à docs/JOURNAL.md (Fait / Décisions / // HYPOTHÈSE: ouvertes / Tests / Suivant), commitées à part. Aucun vrai appel API, aucun git push. Ne passe pas à l'étape suivante.
+Lis CLAUDE.md et docs/JOURNAL.md. L'étape N a été interrompue : le dernier commit est « wip: étape N » et le journal contient une note « PAUSE étape N ». Lis docs/plan/etape-NN.md et uniquement les fichiers de sa section « À lire », puis reprends exactement là où cette note s'arrête et termine l'étape. Quand les tests sont verts, remplace le commit « wip » par un commit propre de l'étape (git reset --soft HEAD~1, puis un seul commit). Remplace ensuite la note « PAUSE étape N » du journal par 5 lignes (Fait / Décisions / // HYPOTHÈSE: ouvertes / Tests / Suivant), commitées à part. Aucun vrai appel API, aucun git push. Ne passe pas à l'étape suivante.
 ```
+
+### Si le quota coupe sans prévenir
+
+Vous n'avez alors pas pu coller le prompt de pause : il n'y a ni commit « wip » ni note « PAUSE » dans le journal, et `!git status` montre des fichiers modifiés non commités. Au renouvellement, deux choix :
+- **Reprendre :** collez le prompt de l'étape (pas celui de reprise) en ajoutant d'abord cette phrase : « La séance précédente a été coupée : commence par git status et git diff --stat, et reprends à partir des fichiers déjà modifiés. »
+- **Repartir de zéro :** vérifiez `!git status`, puis `!git restore .` et `!git clean -fd` effacent le travail non commité (définitivement). Recollez ensuite le prompt de l'étape.
 
 ### Tableau de suivi (à remplir)
 
