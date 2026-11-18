@@ -46,6 +46,8 @@ Lis CLAUDE.md et docs/JOURNAL.md, puis docs/plan/etape-NN.md et uniquement les f
 Exécute l'étape NN du plan, rien d'autre. Tests verts, un commit, puis ajoute 5 lignes à docs/JOURNAL.md et commite-les.
 ```
 
+Les 8 prompts prêts à coller, étape par étape : `docs/SESSIONS.md`.
+
 ## Réglages utiles
 
 - `/context` : mesurer la fenêtre. Après l'étape 2, recaler les estimations.
