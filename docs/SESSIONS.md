@@ -2,6 +2,8 @@
 
 Ce fichier complète `docs/PROCESSUS.md`. Une section = une session Claude Code = un contexte neuf.
 
+Abonnement Pro : voir la section « Mode Pro » en fin de fichier (une étape par séance, prompt de pause, suivi du quota).
+
 ## Avant chaque session
 
 1. Ouvrir Claude Code dans le dossier du projet (`le-tribunal`).
@@ -286,3 +288,86 @@ Analyse les taux de rejet par règle. Pour toute règle au-dessus de 20 %, propo
 - Ne dites pas « corrige » : tapez `/rewind` pour revenir avant l'erreur, puis reformulez.
 - Si la session sature (compaction automatique) : `/clear`, puis recollez le prompt de l'étape en cours. Il relit `CLAUDE.md` et le journal, et reprend là où git s'est arrêté.
 - Si un test reste rouge après deux essais : arrêtez, copiez l'erreur dans une session neuve avec « Lis CLAUDE.md et docs/JOURNAL.md. Ce test échoue : [erreur]. Corrige uniquement cela. »
+
+---
+
+## Mode Pro (abonnement Pro : 12 séances, une étape chacune)
+
+Principe : sur Pro, le quota est partagé entre claude.ai et Claude Code, avec une fenêtre de 5 heures et un plafond hebdomadaire. On fait donc **une étape par séance**, y compris dans les sessions 1, 4, 5 et 7 qui en regroupent deux plus haut. Les blocs « Étape suivante » fonctionnent seuls : ils relisent `CLAUDE.md` et le journal.
+
+### Déroulé commun d'une séance (à répéter pour chaque étape)
+
+Le préfixe `!` lance une commande depuis Claude Code. S'il ne marche pas chez vous, demandez à Claude de la lancer.
+
+**Avant**
+1. `!git status` : l'arbre doit être propre. `!git log --oneline -3` : le dernier commit est celui de l'étape précédente (ou « wip » si vous reprenez après une pause).
+2. Sur claude.ai, Settings > Usage : notez le pourcentage de la session de 5 heures et du plafond hebdomadaire, dans le tableau de suivi plus bas.
+3. `/clear`, puis `/model` : choisissez Sonnet.
+4. Collez le prompt de l'étape (colonne « Prompt » du tableau suivant).
+
+**Pendant**
+5. N'utilisez pas claude.ai en parallèle : c'est le même quota. Si la fenêtre de 5 heures approche de la fin, collez le prompt de pause (plus bas).
+
+**Après**
+6. Lancez les commandes de contrôle de l'étape (colonne « Contrôle »).
+7. `!git log --oneline -3` : deux nouveaux commits (l'étape, puis le journal). `!git status` : arbre propre.
+8. Settings > Usage : notez les pourcentages d'après.
+9. `/clear`.
+
+### Étape par étape
+
+Poids = taille de contexte estimée de l'étape (léger : 40 k tokens ou moins ; moyen : 44 à 58 k ; lourd : 73 k ou plus). Mettez les étapes lourdes en début de semaine, quand le plafond hebdomadaire est plein.
+
+| Étape | Prompt | Poids | Contrôle | À faire de votre côté |
+|---|---|---|---|---|
+| 1 | Session 1, premier bloc | léger (≈ 20 k) | `!npm test`, `!npm run typecheck`, `!npm run lint` ; demandez à Claude de chercher « sk-ant » hors `node_modules` : rien ne doit sortir | — |
+| 2 | Session 1, « Étape suivante » | lourd (≈ 73 k) | `!npm test -- schemas` | — |
+| 3 | Session 2 | moyen (≈ 58 k) | `!npm run build:plugin` puis `!git diff --exit-code plugin/agents` (aucune sortie) ; `!npm test` | — |
+| 4 | Session 3 | lourd (≈ 88 k) | `!npm test -- llm` | Coupez le Wi-Fi et relancez `npm test -- llm` : il doit passer |
+| 5 | Session 4, premier bloc | moyen (≈ 44 k) | `!npm test` (les 6 tests piégés) | — |
+| 6 | Session 4, « Étape suivante » | moyen (≈ 56 k) | `!npm test -- e2e` | — |
+| 7 | Session 5, premier bloc | moyen (≈ 55 k) | `!npm test -- guardrails` | — |
+| 8 | Session 5, « Étape suivante » | léger (≈ 32 k) | `!npm run trial -- --mock "Brigade IA, agents IA à 149 € par mois, restaurants indépendants, Lyon"` | Ouvrez `rapport.pdf` (dans `.tribunal/<id>/`) |
+| 9 | Session 6, premier bloc, puis « Après vos essais manuels » | lourd (≈ 75 k) | `!npm test` ; le procès en MOCK comme à l'étape 8 | La liste « À FAIRE À LA MAIN » que Claude affiche : plugin, 3 saisies, puis `smoke` (procès payant) |
+| 10 | Session 7, premier bloc | moyen (≈ 48 k) | `!npm test` et `!npm run build` | — |
+| 11 | Session 7, « Étape suivante » | moyen (≈ 58 k) | `!npm test` | `npm run dev`, un procès en MOCK, onglet Réseau : aucune requête vers `api.anthropic.com` |
+| 12 | Session 8, puis « Après vos 3 vrais procès » | léger (≈ 39 k) | `!npm test`, `!npm run lint`, `!npm run build` | 3 vrais procès, `npm run cost`, test du clone neuf, tag `v1.0.0` |
+
+### Prompt de pause
+
+À coller quand le compteur de la fenêtre de 5 heures approche de la limite, avant d'être coupé.
+
+```text
+Je dois m'arrêter. Termine la modification en cours sans en commencer d'autre. Commite l'état actuel avec le message « wip: étape N » (même si des tests sont rouges), puis ajoute au journal ce qui est fait, ce qui reste, et le test qui échoue s'il y en a un. Réponds en 3 lignes.
+```
+
+Remplacez N par le numéro de l'étape. Un commit « wip » est une entorse à la règle « tests verts avant commit » : l'étape n'est pas terminée tant que le commit final n'est pas propre.
+
+### Prompt de reprise après une pause
+
+À coller dans une session neuve (après `/clear`), à la place du prompt de l'étape. Remplacez N et NN.
+
+```text
+Lis CLAUDE.md et docs/JOURNAL.md. L'étape N a été interrompue : le dernier commit est « wip: étape N ». Lis docs/plan/etape-NN.md et uniquement les fichiers de sa section « À lire », puis reprends exactement là où le journal s'arrête et termine l'étape. Quand les tests sont verts, remplace le commit « wip » par un commit propre de l'étape (git reset --soft HEAD~1, puis un seul commit). Ajoute ensuite 5 lignes à docs/JOURNAL.md (Fait / Décisions / // HYPOTHÈSE: ouvertes / Tests / Suivant), commitées à part. Aucun vrai appel API, aucun git push. Ne passe pas à l'étape suivante.
+```
+
+### Tableau de suivi (à remplir)
+
+Notez le pourcentage affiché dans Settings > Usage. Après les étapes 1 et 2, vous saurez ce que coûte une étape légère et une étape lourde.
+
+| Étape | Date | Session de 5 h : avant → après | Semaine : avant → après | Pause (oui/non) |
+|---|---|---|---|---|
+| 1 |  |  |  |  |
+| 2 |  |  |  |  |
+| 3 |  |  |  |  |
+| 4 |  |  |  |  |
+| 5 |  |  |  |  |
+| 6 |  |  |  |  |
+| 7 |  |  |  |  |
+| 8 |  |  |  |  |
+| 9 |  |  |  |  |
+| 10 |  |  |  |  |
+| 11 |  |  |  |  |
+| 12 |  |  |  |  |
+
+Règle de décision (une suggestion, pas une mesure) : si l'étape 2 consomme plus de 20 % de votre plafond hebdomadaire, ne faites qu'une étape lourde par semaine (2, 4, 9) et comptez environ 3 semaines au total.
