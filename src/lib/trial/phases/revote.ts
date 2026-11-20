@@ -4,7 +4,7 @@
 import { AGENTS_JURES, Revote, type AgentJure } from "../../schemas";
 import { prononcer } from "../prononce";
 import { tally } from "../tally";
-import { appeler, avecUneRelance, valider, ValidationError, type Contexte, type Etat } from "./contexte";
+import { appeler, avecUneRelance, suspendreSiEnAttente, valider, ValidationError, type Contexte, type Etat } from "./contexte";
 
 async function revoteDe(ctx: Contexte, etat: Etat, agent: AgentJure): Promise<Revote> {
   const ruling = etat.ruling!;
@@ -47,6 +47,7 @@ async function revoteDe(ctx: Contexte, etat: Etat, agent: AgentJure): Promise<Re
 export async function revote(ctx: Contexte, etat: Etat): Promise<void> {
   const presents = AGENTS_JURES.filter((a) => etat.votes1?.[a]);
   const res = await Promise.allSettled(presents.map((a) => ctx.limite(() => revoteDe(ctx, etat, a))));
+  suspendreSiEnAttente(res);
   etat.votes2 = {};
   for (const [i, r] of res.entries()) {
     if (r.status === "fulfilled") {

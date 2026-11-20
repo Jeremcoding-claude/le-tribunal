@@ -68,7 +68,19 @@ export interface CallAgentResult {
   appels: number;
 }
 
+/**
+ * Mode abonnement : la tâche d'un agent est écrite dans un fichier, Claude Code lance le sous-agent, le CLI reprend ensuite.
+ * Ce n'est pas une erreur : le moteur se suspend et rend la liste des tâches à lancer.
+ */
+export class TacheEnAttente extends Error {
+  constructor(
+    readonly tache: { agent: string; phase: string; tour: number | null; tentative: number; input: string; output: string },
+  ) {
+    super(`Tâche en attente : ${tache.agent} (${tache.phase})`);
+  }
+}
+
 export interface LlmClient {
-  readonly mode: "mock" | "reel";
+  readonly mode: "mock" | "reel" | "plugin";
   callAgent(p: CallAgentParams): Promise<CallAgentResult>;
 }

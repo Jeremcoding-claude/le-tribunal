@@ -4,8 +4,8 @@
 
 import { DebateTurn, CODES_AGENT, AGENTS_JURES, type AgentJure, type JurorBrief } from "../../schemas";
 import { schemaSortie } from "../../../../prompts/agents.config";
-import { nombresSansAppui, verifierDossierApi, verifierProposition, type DossierVerifiable } from "../verifier";
-import { appeler, avecUneRelance, valider, ValidationError, type Contexte, type Etat } from "./contexte";
+import { nombresSansAppui, verifierProposition, type DossierVerifiable } from "../verifier";
+import { appeler, avecUneRelance, suspendreSiEnAttente, valider, verifierSources, ValidationError, type Contexte, type Etat } from "./contexte";
 
 type Affirmation = JurorBrief["affirmations"][number];
 
@@ -45,7 +45,7 @@ async function tourDe(ctx: Contexte, etat: Etat, agent: AgentJure, tour: 1 | 2, 
     // Nouvelles affirmations : vérifiées comme celles de l'instruction.
     const local = new Map(connus);
     if (t.nouvelles_affirmations.length) {
-      const v = await verifierDossierApi({ agent, affirmations: t.nouvelles_affirmations } as DossierVerifiable, r.evidence, etat.saisie!.pays);
+      const v = await verifierSources(ctx, { agent, affirmations: t.nouvelles_affirmations } as DossierVerifiable, r.evidence, etat.saisie!.pays);
       if (v.rejetees.length) throw new ValidationError(`${agent} : nouvelle(s) affirmation(s) rejetée(s) : ${v.rejetees.map((x) => `${x.id} ${x.raison}`).join(" ; ")}`);
       for (const a of t.nouvelles_affirmations) local.set(a.id, a.valeur);
     }
@@ -71,6 +71,7 @@ export async function debat(ctx: Contexte, etat: Etat, tour: 1 | 2): Promise<voi
   const connus = valeursParId(etat);
   const presents = AGENTS_JURES.filter((a) => etat.dossiers?.[a]);
   const res = await Promise.allSettled(presents.map((a) => ctx.limite(() => tourDe(ctx, etat, a, tour, connus))));
+  suspendreSiEnAttente(res);
   etat.debat ??= [];
   for (const [i, r] of res.entries()) {
     if (r.status === "fulfilled") {

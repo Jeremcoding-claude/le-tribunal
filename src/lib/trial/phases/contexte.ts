@@ -8,8 +8,11 @@ import { SuiviBudget } from "../../guardrails/budget";
 import { GUARDRAILS } from "../../guardrails/config";
 import { donneesPersonnelles } from "../../guardrails/privacy";
 import { masquerProfond } from "../../guardrails/redact";
-import type { LlmClient, LlmEvent } from "../../llm/types";
-import { LlmError } from "../../llm/types";
+import type { LlmClient, LlmEvent, ToolEvidence } from "../../llm/types";
+import { LlmError, TacheEnAttente } from "../../llm/types";
+import type { PageLue } from "../../search/types";
+import type { Question } from "../../schemas";
+import { verifierDossierApi, verifierDossierParLecture, type DossierVerifiable, type ResultatVerification } from "../verifier";
 import { SuiviUsage, type Usage } from "../../llm/usage";
 import { construireMission } from "../../prompts/loader";
 import type { SourcesRegistre } from "../../registry";
@@ -31,6 +34,19 @@ export class ProcesError extends Error {
 }
 /** Une sortie d'agent qui ne passe pas un contrôle du code : l'agent est relancé UNE fois (« 1 relance max par juré »). */
 export class ValidationError extends Error {}
+/** Le moteur se suspend : des tâches attendent un sous-agent (mode abonnement). */
+export class Suspension extends Error {}
+/** Les questions de P1b attendent la réponse de l'utilisateur (mode abonnement). */
+export class QuestionsEnAttente extends Error {
+  constructor(readonly questions: Question[]) {
+    super("Questions en attente");
+  }
+}
+
+/** Après un lot en parallèle : si une tâche attend, tout le lot est enregistré puis le moteur se suspend (jamais « juré absent »). */
+export function suspendreSiEnAttente(resultats: PromiseSettledResult<unknown>[]): void {
+  if (resultats.some((r) => r.status === "rejected" && r.reason instanceof TacheEnAttente)) throw new Suspension();
+}
 
 export interface DossierJure {
   brief: JurorBrief;
@@ -79,6 +95,8 @@ export interface Contexte {
   store: Store;
   suivi: SuiviUsage;
   budget: SuiviBudget;
+  /** Mode abonnement : les sources sont vérifiées en relisant les pages (pas de preuves d'outils côté API). */
+  lire?: (url: string) => Promise<PageLue>;
   /** « Prénom Nom » des dirigeants vus dans le registre : ils ne doivent apparaître dans aucune sortie (jamais stockés). */
   nomsProteges: string[];
   repondre?: Repondre;
@@ -119,6 +137,11 @@ export async function appeler(ctx: Contexte, p: { agent: AgentId; phase: Phase; 
   const pii = donneesPersonnelles(r.sortie, ctx.nomsProteges);
   if (pii) throw new ValidationError(`${p.agent} : ${pii} dans la sortie (G9)`);
   return r;
+}
+
+/** Vérifie les sources d'un dossier : preuves des outils (mode API) ou relecture des pages (mode abonnement). */
+export function verifierSources(ctx: Contexte, d: DossierVerifiable, evidence: ToolEvidence, pays: string): Promise<ResultatVerification> {
+  return ctx.lire ? verifierDossierParLecture(d, ctx.lire, pays) : verifierDossierApi(d, evidence, pays);
 }
 
 /** Valide une sortie avec Zod ; sinon ValidationError (l'appelant relance une fois). */

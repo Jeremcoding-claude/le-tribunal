@@ -1,0 +1,8 @@
+{
+  "name": "le-tribunal",
+  "owner": { "name": "Le Tribunal contributors" },
+  "metadata": { "description": "Le Tribunal : cinq jurés IA jugent ton business avec des chiffres sourcés, débattent, revotent et rendent un rapport PDF." },
+  "plugins": [
+    { "name": "tribunal", "source": "./plugin", "description": "Juge un business comme un procès, chiffres sourcés à l'appui." }
+  ]
+}

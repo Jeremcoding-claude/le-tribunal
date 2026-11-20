@@ -18,11 +18,23 @@ import {
 import { texteSalle } from "../../../prompts/salle";
 import { INITIALES_INTERDITES, verifierPrenomCliente } from "../trial/persona-prenom";
 import { formatsPourAgent } from "./format";
+import { PROMPTS_EMBARQUES } from "./embarques.generated";
 
 export class PromptError extends Error {}
 
-export function lirePrompt(fichier: string, racine = process.cwd()): string {
-  return readFileSync(join(racine, "prompts", fichier), "utf8").replace(/\r\n/g, "\n");
+let sourcePrompts: "disque" | "embarques" = "disque";
+/** Le CLI empaqueté du plugin lit les prompts embarqués au build : le dossier courant est celui de l'utilisateur, pas le nôtre. */
+export function utiliserPromptsEmbarques(): void {
+  sourcePrompts = "embarques";
+}
+
+export function lirePrompt(fichier: string, racine?: string): string {
+  if (racine === undefined && sourcePrompts === "embarques") {
+    const t = PROMPTS_EMBARQUES[fichier];
+    if (t === undefined) throw new PromptError(`Prompt embarqué introuvable : ${fichier}`);
+    return t;
+  }
+  return readFileSync(join(racine ?? process.cwd(), "prompts", fichier), "utf8").replace(/\r\n/g, "\n");
 }
 
 /**

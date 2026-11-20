@@ -17,8 +17,8 @@ describe("plugin généré depuis prompts/", () => {
     }
   });
 
-  it("ne contient que les 8 agents du plan, et pas mise-en-forme (mode API seulement)", () => {
-    expect(Object.keys(generes).sort()).toEqual(AGENT_IDS.map((a) => `plugin/agents/${a}.md`).sort());
+  it("ne contient que les 8 agents du plan et les prompts embarqués, pas mise-en-forme (mode API seulement)", () => {
+    expect(Object.keys(generes).sort()).toEqual([...AGENT_IDS.map((a) => `plugin/agents/${a}.md`), "src/lib/prompts/embarques.generated.ts"].sort());
     expect(readdirSync(join(RACINE, "plugin/agents")).filter((f) => f.endsWith(".md")).sort()).toEqual(AGENT_IDS.map((a) => `${a}.md`).sort());
     expect(generes).not.toHaveProperty("plugin/agents/mise-en-forme.md");
   });

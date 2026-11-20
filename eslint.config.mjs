@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Fichier généré (CLI empaqueté, 3 Mo minifié) et sorties des procès : jamais analysés.
+    "plugin/bin/**",
+    ".tribunal/**",
   ]),
 ]);
 

@@ -5,14 +5,16 @@ import pLimit from "p-limit";
 import { SuiviBudget } from "../guardrails/budget";
 import { GUARDRAILS } from "../guardrails/config";
 import { masquerCles } from "../guardrails/redact";
-import type { LlmClient } from "../llm/types";
+import type { PageLue } from "../search/types";
+import { TacheEnAttente, type LlmClient } from "../llm/types";
+import type { Question } from "../schemas";
 import { SuiviUsage } from "../llm/usage";
 import type { SourcesRegistre } from "../registry";
 import type { TrialEvent } from "../schemas";
 import type { Store } from "../store/types";
 import { creerStoreMemoire } from "../store/memoire";
 import { correction } from "./phases/correction";
-import { creerEmetteur, ProcesError, type Contexte, type Etat } from "./phases/contexte";
+import { creerEmetteur, ProcesError, QuestionsEnAttente, Suspension, type Contexte, type Etat } from "./phases/contexte";
 import { debat } from "./phases/debat";
 import { depot, SaisieIncomplete } from "./phases/depot";
 import { identification, miseEnEtat, questions } from "./phases/mise-en-etat";
@@ -33,15 +35,19 @@ export interface OptionsProces {
   /** S'arrête après cette phase (tests de reprise). */
   arretApres?: PhaseProces;
   now?: () => string;
+  /** Mode abonnement : relire les pages pour vérifier les sources (au lieu des preuves des outils de l'API). */
+  lire?: (url: string) => Promise<PageLue>;
 }
 
-export type StatutProces = "termine" | "ajourne" | "interrompu" | "echec" | "budget_depasse" | "saisie_incomplete";
+export type StatutProces = "termine" | "ajourne" | "interrompu" | "echec" | "budget_depasse" | "saisie_incomplete" | "en_attente" | "questions";
 
 export interface ResultatProces {
   id: string;
   statut: StatutProces;
   etat?: Etat;
   message?: string;
+  /** Statut « questions » : les questions de P1b à poser telles quelles. */
+  questions?: Question[];
   evenements: TrialEvent[];
 }
 
@@ -73,6 +79,7 @@ export async function runTrial(texte: string, o: OptionsProces): Promise<Resulta
     budget: new SuiviBudget(),
     nomsProteges: [],
     repondre: o.repondre,
+    lire: o.lire,
     limite: pLimit(GUARDRAILS.concurrency),
     emit: creerEmetteur(store, id, existants.length, o.now),
   };
@@ -112,6 +119,9 @@ export async function runTrial(texte: string, o: OptionsProces): Promise<Resulta
     await store.sauvegarder(id, "TERMINE", etat);
     return fini(etat.resultat?.verdictJury === "AJOURNE" ? "ajourne" : "termine");
   } catch (e) {
+    // Mode abonnement : le moteur se suspend, ce n'est pas une erreur. Le CLI lit les tâches dans le client.
+    if (e instanceof Suspension || e instanceof TacheEnAttente) return fini("en_attente");
+    if (e instanceof QuestionsEnAttente) return { ...(await fini("questions")), questions: e.questions };
     if (e instanceof SaisieIncomplete) return { id, statut: "saisie_incomplete", message: masquerCles(e.message), evenements: await store.evenements(id) };
     const message = masquerCles((e as Error).message);
     const code = e instanceof ProcesError ? e.code : "echec";

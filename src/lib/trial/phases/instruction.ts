@@ -12,10 +12,10 @@ import {
   type JurorBrief,
 } from "../../schemas";
 import { schemaSortie } from "../../../../prompts/agents.config";
-import type { ToolEvidence } from "../../llm/types";
+import { TacheEnAttente, type ToolEvidence } from "../../llm/types";
 import { calculerLedger, entreesDepuisHypotheses, type Hypothese } from "../ledger";
-import { verifierDossierApi, verifierLecture, verifierNombresLibres, type DossierVerifiable, type ResultatVerification } from "../verifier";
-import { appeler, avecUneRelance, valider, ValidationError, agentJure, type Contexte, type DossierJure, type Etat } from "./contexte";
+import { verifierLecture, verifierNombresLibres, type DossierVerifiable, type ResultatVerification } from "../verifier";
+import { appeler, avecUneRelance, suspendreSiEnAttente, valider, verifierSources, ValidationError, agentJure, type Contexte, type DossierJure, type Etat } from "./contexte";
 
 interface Verifie<T> {
   brut: T;
@@ -58,7 +58,7 @@ async function jureStandard(ctx: Contexte, etat: Etat, agent: Exclude<AgentJure,
     const r = await appeler(ctx, { agent, phase: "INSTRUCTION", donnees: await donneesJure(etat, agent), prenomCliente: etat.prenomCliente, pays: etat.saisie!.pays });
     const brut = r.sortie as JurorBrief;
     if (r.citationsInconnues.length) await ctx.emit({ type: "source_rejected", agent, id: r.citationsInconnues.join(","), raison: "citation inconnue" });
-    const v = await verifierDossierApi(brut as unknown as DossierVerifiable, r.evidence, etat.saisie!.pays);
+    const v = await verifierSources(ctx, brut as unknown as DossierVerifiable, r.evidence, etat.saisie!.pays);
     await signaler(ctx, agent, brut as unknown as DossierVerifiable, v);
     if (!v.voteValide) throw new ValidationError(`${agent} : vote sans 2 appuis vérifiés (${v.raisonVote})`);
     const propre = assainir(brut as never, v) as JurorBrief;
@@ -74,7 +74,7 @@ async function comptableHypotheses(ctx: Contexte, etat: Etat): Promise<{ affirma
   return avecUneRelance(async () => {
     const r = await appeler(ctx, { agent: "comptable", phase: "INSTRUCTION", donnees: await donneesJure(etat, "comptable"), prenomCliente: etat.prenomCliente, pays: etat.saisie!.pays });
     const brut = r.sortie as { affirmations: never[] } & Record<string, unknown>;
-    const v = await verifierDossierApi({ agent: "comptable", affirmations: brut.affirmations }, r.evidence as ToolEvidence, etat.saisie!.pays);
+    const v = await verifierSources(ctx, { agent: "comptable", affirmations: brut.affirmations }, r.evidence as ToolEvidence, etat.saisie!.pays);
     await signaler(ctx, "comptable", { agent: "comptable", affirmations: brut.affirmations }, v);
     const propre = assainir(brut as never, v) as never;
     return { affirmations: { brut: valider(ComptableInstruction, propre, "Comptable (hypothèses)"), v } };
@@ -100,6 +100,7 @@ export async function instruction(ctx: Contexte, etat: Etat): Promise<void> {
     ctx.limite(() => comptableHypotheses(ctx, etat)),
     ...autres.map((a) => ctx.limite(() => jureStandard(ctx, etat, a))),
   ]);
+  suspendreSiEnAttente([hyp, ...resultats]);
   autres.forEach((a, i) => {
     const r = resultats[i];
     if (r.status === "fulfilled") dossiers[a] = r.value;
@@ -147,7 +148,7 @@ export async function instruction(ctx: Contexte, etat: Etat): Promise<void> {
       });
       dossiers.comptable = { brief, acceptees: v.acceptees, rejets: v.rejetees };
     } catch (e) {
-      if ((e as { code?: string }).code === "budget_depasse") throw e;
+      if ((e as { code?: string }).code === "budget_depasse" || e instanceof TacheEnAttente) throw e;
       await echec("comptable", e);
     }
   } else await echec("comptable", hyp.reason);

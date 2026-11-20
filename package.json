@@ -2,6 +2,7 @@
   "name": "le-tribunal",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +10,7 @@
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
-    "smoke": "node -e \"console.log('smoke : à venir (étape 12)')\"",
+    "smoke": "tsx scripts/smoke.ts",
     "build:plugin": "tsx scripts/build-plugin.ts",
     "trial": "tsx src/cli/tribunal.ts"
   },
