@@ -11,8 +11,8 @@
 | **P1b Questions** | Code (textes fixes) ; l'utilisateur répond | `champs_manquants`, statut d'identification | 0 à 2 `Question` ; puis `CaseFile` complété | Au plus 2 questions, de la liste `GUARDRAILS.questions.autorisees` ; aucun texte de question écrit par un LLM ; réponse au prix lue par `numbers.ts` ; « passer » toujours possible |
 | **P1c Mise en état** | Greffier-rédacteur (Sonnet, sans web) | `saisie_confirmee` + `Identification` vérifiée + réponses de P1b | `CaseFile` + `PersonaCliente` + `champs_manquants` | Zod, mots interdits, rien d'ajouté, prix selon son origine, aucun chiffre dans la persona |
 | **P2 Instruction** | 5 jurés **en parallèle** (Sonnet + web) | `CaseFile` (+ persona pour la Cliente) | 5 `JurorBrief`, dont **vote 1 scellé** | Zod, vérificateur de sources, nombres libres, cohérence note/verdict ; 1 relance max par juré ; Comptable : appel 1 → `ledger.ts` → appel 2 |
-| **P3 Débat** (2 tours) | 5 jurés | Arguments et affirmations **vérifiés** des autres, **sans leurs notes** | `DebateTurn` par juré et par tour | Au moins 1 réplique de type `conteste` par juré et par tour ; au plus 1 recherche nouvelle par tour ; nouvelles affirmations vérifiées |
-| **P4 Correction** | Juge (Opus, sans web) | Tout ce qui précède + stats du vote 1 + objections classées | `Ruling` + `case_file_v2` | ≤ 3 changements, réponse aux 3 objections principales, aucun chiffre nouveau |
+| **P3 Débat** (2 tours) | 5 jurés | Arguments et affirmations **vérifiés** des autres, **sans leurs notes** | `DebateTurn` par juré et par tour (+ une `Proposition` au tour 2) | Au moins 1 réplique de type `conteste` par juré et par tour ; au plus 1 recherche nouvelle par tour ; nouvelles affirmations vérifiées ; **tour 2 : au plus 1 proposition d'amélioration par juré** (appui vérifié, aucun nombre inventé : G11) |
+| **P4 Correction** | Juge (Opus, sans web) | Tout ce qui précède + **propositions du tour 2** + stats du vote 1 + objections classées | `Ruling` + `case_file_v2` | ≤ 3 changements, réponse aux 3 objections principales, aucun chiffre nouveau ; seuls les champs annoncés changent ; chaque changement a une source vérifiée (proposition ou `juge`) |
 | **P5 Revote** | 5 jurés en parallèle (Sonnet, sans web) | `case_file_v2`, `Ruling`, **leur propre** vote 1 | `Revote` par juré | `a_change_d_avis` cohérent avec l'écart de note ; si changement, `pourquoi` cite un changement ou un argument |
 | **P6 Verdict et rapport** | Code | Votes 1 et 2 | Note avant, note après, verdict, `rapport.pdf` | `tally.ts`, puis génération PDF |
 
@@ -50,7 +50,7 @@ Format d'un tour de débat :
 }
 ```
 
-Tour 1 : chacun répond aux arguments des autres. Tour 2 : chacun répond aux répliques qui le visaient.
+Tour 1 : chacun répond aux arguments des autres. Tour 2 : chacun répond aux répliques qui le visaient, et peut ajouter **au plus une proposition d'amélioration** dans son domaine (champ `proposition` du tour, `{ id, champ, texte, appuis }`, absent au tour 1 ; voir `Proposition`, §3.2). Nadia en part pour corriger le plan.
 
 Format du revote :
 

@@ -7,6 +7,14 @@
 - `docs/plan/10-1-tarifs-utilises-verifies-le-16-11-20.md`
 - `docs/plan/10-2-estimation-mode-api-hypothese-a-remp.md`
 - `docs/plan/10-3-comment-reduire-le-cout.md`
+- `docs/plan/11-1-principe-un-conteneur-un-processus-u.md`
+- `docs/plan/11-2-dockerfile-multi-stage-3-etapes.md`
+- `docs/plan/11-3-variables-d-environnement-env.md`
+- `docs/plan/11-4-persistance-volume-docker.md`
+- `docs/plan/11-5-reseau-et-reverse-proxy.md`
+- `docs/plan/11-6-mise-en-route-5-commandes.md`
+- `docs/plan/11-7-garde-fous-de-deploiement-un-test-pi.md`
+- `docs/plan/11-8-ce-qui-est-verifie-ce-qui-ne-l-est-p.md`
 
 Ne lis pas `docs/PLAN.md` en entier. Les mentions de « docs/PLAN.md » ci-dessous désignent ces fichiers.
 
@@ -28,9 +36,15 @@ Lis CLAUDE.md et les fichiers de docs/plan/ listés dans « À lire ».
    min, max, et répartition par phase ; met à jour la section « Coût mesuré » du README.
 5. Lance 3 vrais procès (dont le cas restaurants) avec MOCK_MODE=false et enregistre les coûts
    et les taux de rejet par règle. Une règle au-dessus de 20 % : ajuster le prompt ou la tolérance, puis relancer.
-6. Prépare le tag v1.0.0.
+6. Déploiement (section 11) : Dockerfile multi-stage (deps, build, runner non-root, Node 24, output "standalone"), .dockerignore,
+   docker-compose.yml (un service, port sur 127.0.0.1, volume nommé tribunal-data sur /data, init, cap_drop ALL), .env.example,
+   deploy/ (Caddy et nginx, flux SSE sans tampon), src/lib/env.ts (validation Zod, seul endroit qui lit process.env),
+   route /api/health, page de saisie du jeton d'accès quand MOCK_MODE=false, migrations Drizzle appliquées au démarrage.
+   Tests piégés (G13) : tests/guardrails/docker-secrets.test.ts et tests/unit/env.test.ts.
+   Fais lire par un sous-agent la doc officielle de Next.js (output standalone) : réponse de 300 mots.
+7. Prépare le tag v1.0.0.
 ```
 
-**Critère de validation :** un clone neuf dans un autre dossier, en suivant uniquement le README, lance un procès MOCK en moins de 5 minutes ; la CI est verte ; `npm run cost` affiche un coût moyen mesuré.
+**Critère de validation :** un clone neuf dans un autre dossier, en suivant uniquement le README, lance un procès MOCK en moins de 5 minutes ; la CI est verte ; `npm run cost` affiche un coût moyen mesuré ; sur la machine de l'utilisateur, les 5 commandes du §11.6 amènent le conteneur à « healthy » (non vérifié à ce jour : Docker Hub était inaccessible lors de la préparation).
 
 ---

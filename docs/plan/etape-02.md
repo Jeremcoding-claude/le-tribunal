@@ -2,6 +2,7 @@
 
 ## À lire (et rien d'autre)
 
+- `docs/plan/03-0-les-prenoms-les-voix-et-la-salle-v3.md`
 - `docs/plan/03-1-regles-communes-prompts-commun-md.md`
 - `docs/plan/03-2-le-format-commun-de-sortie-zod.md`
 - `docs/plan/03-3-le-greffier-mise-en-etat-pas-un-jure.md`
@@ -13,6 +14,7 @@
 - `docs/plan/03-9-le-juge.md`
 - `docs/plan/04-1-les-phases.md`
 - `docs/plan/04-2-le-calcul-de-la-note-globale-tally-t.md`
+- `docs/plan/04-3-qui-voit-quoi.md`
 
 Ne lis pas `docs/PLAN.md` en entier. Les mentions de « docs/PLAN.md » ci-dessous désignent ces fichiers.
 
@@ -31,6 +33,8 @@ Lis CLAUDE.md et les fichiers de docs/plan/ listés dans « À lire ».
    Ajoute les superRefine de la section 3.2 (fait ⇒ source ; estimation ⇒ base ; cohérence note/verdict).
    Exporte les types TypeScript inférés.
    Ajoute Saisie, PiecesDuGreffe, Identification (section 3.3), Question et Reponses (section 4.1, P1b).
+   v3.0 : Proposition (section 3.2 ; candidat à fusionner), champ proposition de DebateTurn, champ source des changements du Ruling,
+   et la règle du prénom de PersonaCliente (section 3.0).
    v2.4 : MiseEnEtat (case_file + persona_cliente + champs_manquants), ComptableHypotheses, ComptableLecture,
    et la variante « mise en forme » d'Affirmation (champ citation: "Cx" au lieu de source_url + extrait).
    Chaque champ a un .describe() court : il sert de documentation dans les formats générés.

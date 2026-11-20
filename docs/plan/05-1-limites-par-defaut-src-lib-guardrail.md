@@ -34,7 +34,7 @@ export const GUARDRAILS = {
   questions: { max: 2, autorisees: ["prix_absent", "homonymes"], relancesSiIllisible: 1 },
   registry: { fr: { maxCorrespondances: 5, timeoutMs: 6_000, cacheHeures: 24 },
               champsSupprimes: ["dirigeants", "elus", "adresse_personne", "telephone", "email"] },
-  tally: { quorum: 4, goMin: 6.5, nogoBelow: 4.0, divise: 2.5,
+  tally: { quorum: 4, goMin: 6, nogoMax: 4.5, divise: 1.5, consensusSuspect: 0.5,
            coherence: { GO: [6, 10], PIVOT: [3, 7.5], "NO-GO": [0, 4.5] } },
   numbers: { tolerancePct: 1 },
 };

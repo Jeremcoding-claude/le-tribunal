@@ -30,7 +30,10 @@ le-tribunal/
 │   │   │   ├── tally.ts           # moyennes, écart-type, quorum, majorité, égalité
 │   │   │   ├── ledger.ts          # les calculs du Comptable, ligne par ligne
 │   │   │   ├── verifier.ts        # aucun chiffre sans source vérifiée
-│   │   │   └── objections.ts      # classement des objections pour le Juge
+│   │   │   ├── objections.ts      # classement des objections pour le Juge
+│   │   │   ├── prononce.ts        # texte fixe de Nadia au verdict, nombres fournis par tally.ts (candidat)
+│   │   │   ├── persona-prenom.ts  # règle du prénom de la Cliente (candidat)
+│   │   │   └── replique-cliente.ts  # chiffres permis dans les répliques de la Cliente (candidat)
 │   │   ├── llm/
 │   │   │   ├── client.ts          # Messages API (vrai)
 │   │   │   ├── mock.ts            # rejoue les fixtures (MOCK)
@@ -45,12 +48,16 @@ le-tribunal/
 │   │   │   ├── consensus.ts       # anti-consensus artificiel
 │   │   │   ├── budget.ts          # plafond de coût
 │   │   │   └── redact.ts          # masque la clé API partout
-│   │   ├── prompts/loader.ts      # lit prompts/*.md et assemble les messages
+│   │   ├── prompts/loader.ts      # lit prompts/*.md, assemble les messages, remplace <!-- PRENOMS -->
+│   │   ├── env.ts                 # SEUL endroit qui lit process.env (validation Zod)
 │   │   ├── store/                 # sqlite (web) | fichiers (plugin)
 │   │   └── pdf/Report.tsx
 │   ├── cli/tribunal.ts            # start | next | submit | run | report | resume
+│   ├── components/{salle,audience}/   # scène 3D, repli 2D, journal d'audience (section 12)
 │   └── app/                       # Next.js : pages + /api
 ├── fixtures/restaurants/          # réponses MOCK du cas de référence
+├── Dockerfile  docker-compose.yml  .dockerignore   # déploiement (section 11)
+├── deploy/                        # exemples Caddy et nginx (§11.5)
 ├── scripts/build-plugin.ts
 └── tests/{unit,guardrails,e2e}/
 ```

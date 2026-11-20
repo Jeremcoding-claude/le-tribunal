@@ -11,12 +11,12 @@ Ne lis pas `docs/PLAN.md` en entier. Les mentions de « docs/PLAN.md » ci-desso
 
 ### Étape 7 — Tous les garde-fous et leurs tests piégés
 
-**Objectif :** les 10 garde-fous de la section 5 sont actifs et prouvés.
+**Objectif :** les 14 garde-fous de la section 5 sont actifs et prouvés (les tests de G13 et G14 s'écrivent aux étapes 12 et 11, avec le code qu'ils gardent).
 
 ```text
 Lis CLAUDE.md et les fichiers de docs/plan/ listés dans « À lire ».
 
-Implémente ce qui manque parmi G1 à G10 : sanitize.ts, neutrality.ts, consensus.ts, budget.ts, redact.ts, privacy.ts,
+Implémente ce qui manque parmi G1 à G12 : sanitize.ts, neutrality.ts, consensus.ts, budget.ts, redact.ts, privacy.ts,
 reprise après panne (resume), relances. Pour CHAQUE garde-fou, écris dans tests/guardrails/ les tests
 piégés listés dans le tableau 5.2, avec les fixtures de fixtures/pieges/.
 Ajoute un test "inventaire" qui échoue si un fichier de src/lib/guardrails/ n'a pas de test associé (config.ts est exempté ; numbers.ts a son test unitaire de l'étape 5).

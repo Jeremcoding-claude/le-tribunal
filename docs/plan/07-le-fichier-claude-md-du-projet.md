@@ -16,7 +16,7 @@ Le plan de référence est docs/PLAN.md. En cas de doute, il fait foi. Ne change
 de calcul ou un garde-fou sans mettre à jour le plan et les tests.
 
 ## Stack
-TypeScript strict, Node 20+. Next.js App Router, Tailwind, shadcn/ui.
+TypeScript strict, Node 22+. Next.js App Router, Tailwind, shadcn/ui.
 @anthropic-ai/sdk (Messages API, structured outputs, web_search, web_fetch). Zod.
 Drizzle + SQLite. @react-pdf/renderer. Vitest. tsup pour empaqueter le CLI du plugin.
 
@@ -43,6 +43,10 @@ Drizzle + SQLite. @react-pdf/renderer. Vitest. tsup pour empaqueter le CLI du pl
 - Jamais de clé API côté client, dans un log, un événement, un fichier .tribunal/ ou le PDF (redact.ts).
 - Un garde-fou ajouté = un test piégé ajouté dans tests/guardrails/.
 - Le rapport n'est ni un conseil financier ni un conseil juridique, et le dit.
+- Les prénoms des agents ont une source unique (prompts/agents.config.ts) ; aucun accessoire, couleur ni décor dans un prompt.
+- Le code calcule la note et le verdict (tally.ts) ; Nadia prononce avec un texte fixe, elle ne calcule rien.
+- Une proposition (tour 2) a un appui vérifié et aucun nombre inventé. Le vote 1 n'apparaît à l'écran qu'à l'événement vote1_ouvert.
+- Aucun secret dans l'image Docker ; MOCK_MODE=true par défaut ; mode réel refusé sans clé ni jeton ; process.env n'est lu que dans src/lib/env.ts.
 
 ## Façon de travailler
 - Une étape du plan à la fois. Un commit par étape, tests verts avant commit.

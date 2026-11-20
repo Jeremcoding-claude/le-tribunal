@@ -30,10 +30,12 @@ Lis CLAUDE.md et les fichiers de docs/plan/ listés dans « À lire ».
 3. src/lib/trial/ledger.ts : les lignes L1 à L14 de la section 3.5, chacune avec ses entrées (depuis)
    et "non calculable" si une entrée manque. Aucune autre formule.
 4. Vérification des champs libres (G4) : chaque nombre doit correspondre à un appui ou à une ligne citée.
+   v3.0 : src/lib/trial/replique-cliente.ts (candidat à fusionner) pour les répliques de la Cliente ;
+   G11 pour les propositions (un nombre sans affirmation citée → rejet).
 5. Tests piégés : invented-number, extract-mismatch, value-not-in-extract, roleplay-number,
-   ledger-mismatch, juriste-non-officiel. Tests unitaires de ledger avec des valeurs simples à la main, et de numbers (numbers.test.ts : formats français, tolérance ±1 %).
+   ledger-mismatch, juriste-non-officiel, proposal-without-support (G11). Tests unitaires de ledger avec des valeurs simples à la main, et de numbers (numbers.test.ts : formats français, tolérance ±1 %).
 ```
 
-**Critère de validation :** les 6 tests piégés passent. `ledger.test.ts` vérifie au moins un cas calculé à la main (ex. F = 1 000, marge = 100 → point mort = 10).
+**Critère de validation :** les 7 tests piégés passent. `ledger.test.ts` vérifie au moins un cas calculé à la main (ex. F = 1 000, marge = 100 → point mort = 10).
 
 ---

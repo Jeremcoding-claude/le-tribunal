@@ -3,6 +3,7 @@
 ## À lire (et rien d'autre)
 
 - `docs/plan/02-1-le-principe.md`
+- `docs/plan/03-0-les-prenoms-les-voix-et-la-salle-v3.md`
 - `docs/plan/03-1-regles-communes-prompts-commun-md.md`
 - `docs/plan/03-3-le-greffier-mise-en-etat-pas-un-jure.md`
 - `docs/plan/03-4-l-investisseur.md`
@@ -34,9 +35,11 @@ Lis CLAUDE.md et les fichiers de docs/plan/ listés dans « À lire ».
    à la place de <!-- FORMAT --> en mode plugin seulement. Le message MISSION finit par le RAPPEL de la phase.
    Aucune donnée dans les prompts système : elles arrivent dans le message MISSION.
 2. Écris prompts/agents.config.ts : pour chaque agent, modèle, outils (API et Claude Code),
-   limites de recherche lues dans GUARDRAILS.
+   limites de recherche lues dans GUARDRAILS, et (v3.0) prénom, rôle et id : SOURCE UNIQUE des prénoms (section 3.0).
 3. Écris src/lib/prompts/loader.ts : assemble le prompt système (_commun + agent) et le message MISSION
-   (phase, budget, DONNÉES), et refuse une donnée manquante.
+   (phase, budget, DONNÉES), et refuse une donnée manquante. v3.0 : ajoute le marqueur <!-- PRENOMS --> dans prompts/_commun.md
+   et le remplace par la salle (prénoms de agents.config.ts) ; le prénom de la Cliente va dans la MISSION, jamais dans le prompt système ;
+   aucun accessoire ni décor dans prompts/.
 4. Écris scripts/build-plugin.ts qui génère plugin/agents/<agent>.md avec un en-tête YAML
    (name: <agent> SANS préfixe ni « : », description, tools, model: sonnet ou opus, maxTurns) et, comme corps, le prompt assemblé SANS variables
    (le sous-agent lira ses données dans le fichier d'entrée que le CLI lui donne).
@@ -46,6 +49,8 @@ Lis CLAUDE.md et les fichiers de docs/plan/ listés dans « À lire ».
    Outils Claude Code : jurés et greffier-enquete = WebSearch, WebFetch, Read, Write ;
    greffier-redaction et juge = Read, Write. mise-en-forme.md ne sert qu'en mode API (aucun agent plugin).
 5. Test : régénérer le plugin ne produit aucune différence avec les fichiers commités (test "à jour").
+6. v3.0 : tests/guardrails/prenoms-prompts.test.ts (G12) : injection des prénoms, aucun accessoire dans prompts/,
+   prénom de la Cliente présent dans la MISSION et absent du prompt système.
 ```
 
 **Critère de validation :** `npm run build:plugin && git diff --exit-code plugin/agents` ne montre rien. Le test de cohérence prompts ↔ plugin passe. `claude plugin validate ./plugin` affiche `Validation passed`.

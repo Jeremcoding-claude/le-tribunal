@@ -120,7 +120,7 @@ Règles :
     "mots_retires": []
   },
   "persona_cliente": {
-    "prenom": "Nadine",
+    "prenom": "Sandrine",
     "role": "Gérante et propriétaire",
     "etablissement": "Brasserie de quartier, service midi et soir",
     "ville": "Lyon",
@@ -141,7 +141,7 @@ Règles :
 #### 3.3.4 La Cliente, créée à partir de la cible et de la ville
 
 **Comment la Cliente est créée à partir de la cible :**
-1. Le Greffier choisit **l'archétype le plus fréquent** de la cible (ici : un restaurant indépendant, pas une chaîne). Le prénom est fictif et courant.
+1. Le Greffier choisit **l'archétype le plus fréquent** de la cible (ici : un restaurant indépendant, pas une chaîne). Le prénom est fictif et courant, mais ni l'un des cinq prénoms de la salle (§3.0) ni un prénom dont l'initiale est V, L, C, M ou N ; sinon le code rejette la persona (une relance du rédacteur).
 2. Il décrit la **situation** (rôle, journée, rapport au numérique, registre de langue), **jamais de chiffre**. Le code rejette tout chiffre dans `persona_cliente`, sauf les heures de la journée type.
 3. Il liste ce que la Cliente **devra vérifier** sur le web (`a_verifier_par_la_cliente`). Ce sont ces faits sourcés qui fondent ses objections.
 4. Le code vérifie que la persona est cohérente avec `case_file.cible` (même secteur) et vit dans la commune de `zone`.

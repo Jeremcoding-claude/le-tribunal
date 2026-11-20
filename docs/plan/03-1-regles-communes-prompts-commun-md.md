@@ -1,7 +1,5 @@
 <!-- GÉNÉRÉ par scripts/split-plan.mjs depuis docs/PLAN.md — ne pas modifier -->
 
-## 3. Les 6 personnages (+ le greffier)
-
 ### 3.1 Règles communes (`prompts/_commun.md`)
 
 Tous les jurés reçoivent ces règles en tête de leur prompt système :
