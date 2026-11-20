@@ -22,7 +22,23 @@
     ],
     "reponses_objections": [
       {
-        "objection": "CLI-O1",
+        "objection": "CON-A1",
+        "decision": "changement",
+        "justification": "La cible se resserre sur les restaurants équipés, où l'accès est un fossé.",
+        "appuis": [
+          "INV-3"
+        ]
+      },
+      {
+        "objection": "CON-A2",
+        "decision": "changement",
+        "justification": "La copie existe déjà ; le fossé se construit sur une cible précise et un contrat.",
+        "appuis": [
+          "CON-4"
+        ]
+      },
+      {
+        "objection": "CLI-A1",
         "decision": "changement",
         "justification": "Le prix d'entrée passe sous le budget logiciel actuel des restaurateurs.",
         "appuis": [
@@ -30,11 +46,11 @@
         ]
       },
       {
-        "objection": "CON-A1",
+        "objection": "CLI-O1",
         "decision": "changement",
-        "justification": "La cible se resserre sur les restaurants équipés, où l'accès est un fossé.",
+        "justification": "Le prix d'entrée passe sous le budget logiciel actuel des restaurateurs.",
         "appuis": [
-          "INV-3"
+          "CLI-2"
         ]
       },
       {

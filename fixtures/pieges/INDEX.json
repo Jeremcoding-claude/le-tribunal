@@ -214,7 +214,7 @@
     "garde_fou": "G10",
     "fixture": null,
     "etape_ecriture": 6,
-    "note": "Le statut est décidé par le Greffier : contrôle code (plusieurs correspondances => homonymes) en phase mise en état"
+    "note": "Statut fixé par le Greffier : contrôle du code en P1a (tests/guardrails/moteur.test.ts)"
   },
   {
     "test": "intake-price-element",

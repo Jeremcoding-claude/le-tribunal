@@ -19,3 +19,33 @@ export function evidenceDe(affs: Affirmation[]): ToolEvidence {
     lectures: [],
   };
 }
+
+// ───────────── Procès MOCK : un client qui enveloppe le client MOCK ─────────────
+import { creerClientMock } from "@/lib/llm/mock";
+import type { CallAgentParams, CallAgentResult, LlmClient } from "@/lib/llm/types";
+import { creerSourcesMock } from "@/lib/registry/mock";
+
+export interface Crochets {
+  /** Appelé avant chaque appel ; peut lever pour simuler une panne. */
+  avant?: (p: CallAgentParams) => void;
+  /** Peut modifier la réponse. */
+  apres?: (p: CallAgentParams, r: CallAgentResult) => CallAgentResult;
+}
+
+export function clientTest(c: Crochets = {}): LlmClient & { appels: CallAgentParams[] } {
+  const mock = creerClientMock();
+  const appels: CallAgentParams[] = [];
+  return {
+    mode: "mock",
+    appels,
+    async callAgent(p) {
+      appels.push(p);
+      c.avant?.(p);
+      const r = await mock.callAgent(p);
+      return c.apres ? c.apres(p, structuredClone(r)) : r;
+    },
+  };
+}
+
+export const sourcesMock = () => creerSourcesMock();
+export const SAISIE_REFERENCE = "Brigade IA, agents IA à 149 € par mois, restaurants indépendants, Lyon";

@@ -58,6 +58,8 @@ export const GUARDRAILS = {
     consensusSuspect: 0.5,
     coherence: { GO: [6, 10], PIVOT: [3, 7.5], "NO-GO": [0, 4.5] },
   },
+  // // HYPOTHÈSE: objectif de rémunération mensuelle du fondateur pour la ligne L11 (ref « CONFIG » du Comptable).
+  ledger: { objectifRemunerationMensuelle: 2500 },
   numbers: { tolerancePct: 1 },
 } as const;
 
