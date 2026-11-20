@@ -48,3 +48,4 @@ next-env.d.ts
 *.db-wal
 *.db-shm
 # plugin/bin/ n'est PAS ignoré : le marketplace installe le plugin depuis Git
+/data/

@@ -67,3 +67,6 @@ export type Guardrails = typeof GUARDRAILS;
 
 /** La clé API est-elle définie ? (jamais sa valeur : le SDK la lit lui-même). Étape 12 : déplacé dans src/lib/env.ts. */
 export const cleAnthropicPresente = (): boolean => Boolean(process.env.ANTHROPIC_API_KEY);
+
+/** Dossier des données (base SQLite, fichiers). Étape 12 : déplacé dans src/lib/env.ts (DATA_DIR). */
+export const dossierDonnees = (): string => process.env.DATA_DIR ?? "./data";
