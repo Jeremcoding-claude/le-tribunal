@@ -1271,7 +1271,7 @@ Lis CLAUDE.md et docs/PLAN.md sections 9, 10 et 11.
    et les taux de rejet par règle. Une règle au-dessus de 20 % : ajuster le prompt ou la tolérance, puis relancer.
 6. Déploiement (section 11) : Dockerfile multi-stage (deps, build, runner non-root, Node 24, output "standalone"), .dockerignore,
    docker-compose.yml (un service, port sur 127.0.0.1, volume nommé tribunal-data sur /data, init, cap_drop ALL), .env.example,
-   deploy/ (Caddy et nginx, flux SSE sans tampon), src/lib/env.ts (validation Zod, seul endroit qui lit process.env),
+   deploy/ (Caddy et nginx, flux SSE sans tampon), src/lib/env.ts (validation Zod, seul endroit qui lit process.env ; config.ts et le client LLM l'importent au lieu de lire process.env),
    route /api/health, page de saisie du jeton d'accès quand MOCK_MODE=false, migrations Drizzle appliquées au démarrage.
    Tests piégés (G13) : tests/guardrails/docker-secrets.test.ts et tests/unit/env.test.ts.
    Fais lire par un sous-agent la doc officielle de Next.js (output standalone) : réponse de 300 mots.
@@ -1328,7 +1328,7 @@ Drizzle + SQLite. @react-pdf/renderer. Vitest. tsup pour empaqueter le CLI du pl
 - Les prénoms des agents ont une source unique (prompts/agents.config.ts) ; aucun accessoire, couleur ni décor dans un prompt.
 - Le code calcule la note et le verdict (tally.ts) ; Nadia prononce avec un texte fixe, elle ne calcule rien.
 - Une proposition (tour 2) a un appui vérifié et aucun nombre inventé. Le vote 1 n'apparaît à l'écran qu'à l'événement vote1_ouvert.
-- Aucun secret dans l'image Docker ; MOCK_MODE=true par défaut ; mode réel refusé sans clé ni jeton ; process.env n'est lu que dans src/lib/env.ts.
+- Aucun secret dans l'image Docker ; MOCK_MODE=true par défaut ; mode réel refusé sans clé ni jeton ; à partir de l'étape 12, process.env n'est lu que dans src/lib/env.ts (d'ici là, config.ts lit MOCK_MODE).
 
 ## Façon de travailler
 - Une étape du plan à la fois. Un commit par étape, tests verts avant commit.

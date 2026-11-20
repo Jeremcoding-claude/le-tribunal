@@ -38,7 +38,7 @@ Lis CLAUDE.md et les fichiers de docs/plan/ listés dans « À lire ».
    et les taux de rejet par règle. Une règle au-dessus de 20 % : ajuster le prompt ou la tolérance, puis relancer.
 6. Déploiement (section 11) : Dockerfile multi-stage (deps, build, runner non-root, Node 24, output "standalone"), .dockerignore,
    docker-compose.yml (un service, port sur 127.0.0.1, volume nommé tribunal-data sur /data, init, cap_drop ALL), .env.example,
-   deploy/ (Caddy et nginx, flux SSE sans tampon), src/lib/env.ts (validation Zod, seul endroit qui lit process.env),
+   deploy/ (Caddy et nginx, flux SSE sans tampon), src/lib/env.ts (validation Zod, seul endroit qui lit process.env ; config.ts et le client LLM l'importent au lieu de lire process.env),
    route /api/health, page de saisie du jeton d'accès quand MOCK_MODE=false, migrations Drizzle appliquées au démarrage.
    Tests piégés (G13) : tests/guardrails/docker-secrets.test.ts et tests/unit/env.test.ts.
    Fais lire par un sous-agent la doc officielle de Next.js (output standalone) : réponse de 300 mots.

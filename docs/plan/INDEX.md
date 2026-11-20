@@ -40,8 +40,8 @@ Poids estimé : 1 token ≈ 3,5 caractères (estimation).
 | `etape-09.md` | Étape 9 — Le CLI et le plugin Claude Code : premier vrai procès dans le terminal | ≈ 1 235 tokens |
 | `etape-10.md` | Étape 10 — L'API web, la base SQLite et le direct (SSE) | ≈ 502 tokens |
 | `etape-11.md` | Étape 11 — L'interface « salle d'audience » | ≈ 1 395 tokens |
-| `etape-12.md` | Étape 12 — Publication open source, CI et mesure du coût réel | ≈ 876 tokens |
-| `07-le-fichier-claude-md-du-projet.md` | 7. Le fichier CLAUDE.md du projet | ≈ 1 280 tokens |
+| `etape-12.md` | Étape 12 — Publication open source, CI et mesure du coût réel | ≈ 895 tokens |
+| `07-le-fichier-claude-md-du-projet.md` | 7. Le fichier CLAUDE.md du projet | ≈ 1 297 tokens |
 | `08-la-structure-du-rapport-pdf.md` | 8. La structure du rapport PDF | ≈ 778 tokens |
 | `09-1-les-2-liens.md` | 9.1 Les 2 liens | ≈ 552 tokens |
 | `09-2-le-readme-gabarit.md` | 9.2 Le README (gabarit) | ≈ 1 083 tokens |
@@ -71,7 +71,7 @@ Poids estimé : 1 token ≈ 3,5 caractères (estimation).
 
 | Étape | Fichiers à lire | Poids estimé |
 |---|---|---|
-| 1 | `etape-01.md` + 3 fichier(s) | ≈ 3 638 tokens |
+| 1 | `etape-01.md` + 3 fichier(s) | ≈ 3 655 tokens |
 | 2 | `etape-02.md` + 13 fichier(s) | ≈ 13 061 tokens |
 | 3 | `etape-03.md` + 11 fichier(s) + prompts-v3.md | ≈ 10 269 tokens |
 | 4 | `etape-04.md` + 4 fichier(s) | ≈ 6 884 tokens |
@@ -82,4 +82,4 @@ Poids estimé : 1 token ≈ 3,5 caractères (estimation).
 | 9 | `etape-09.md` + 2 fichier(s) | ≈ 2 499 tokens |
 | 10 | `etape-10.md` + 3 fichier(s) | ≈ 5 277 tokens |
 | 11 | `etape-11.md` + 14 fichier(s) | ≈ 12 078 tokens |
-| 12 | `etape-12.md` + 13 fichier(s) | ≈ 6 099 tokens |
+| 12 | `etape-12.md` + 13 fichier(s) | ≈ 6 119 tokens |
