@@ -1,0 +1,137 @@
+{
+  "agent": "comptable",
+  "affirmations": [
+    {
+      "id": "CPT-1",
+      "texte": "Les frais du prestataire de paiement sont de 1,5 % par transaction.",
+      "valeur": 1.5,
+      "unite": "%",
+      "type": "fait",
+      "base": [],
+      "source_url": "https://exemple.test/tarifs-paiement",
+      "extrait": "frais de 1,5 % par transaction"
+    },
+    {
+      "id": "CPT-2",
+      "texte": "Un modèle de langage de taille moyenne coûte 3 € par million de tokens en entrée.",
+      "valeur": 3,
+      "unite": "€/M tokens",
+      "type": "fait",
+      "base": [],
+      "source_url": "https://exemple.test/grille-tarifaire-modele",
+      "extrait": "3 € par million de tokens en entrée"
+    },
+    {
+      "id": "CPT-3",
+      "texte": "Coût variable par client et par mois (modèle, hébergement, paiement).",
+      "valeur": 41,
+      "unite": "€/mois",
+      "type": "estimation",
+      "base": [
+        "CPT-1",
+        "CPT-2"
+      ],
+      "source_url": null,
+      "extrait": null
+    },
+    {
+      "id": "CPT-5",
+      "texte": "Le désabonnement mensuel moyen des logiciels pour TPE est de 4 %.",
+      "valeur": 4,
+      "unite": "%/mois",
+      "type": "fait",
+      "base": [],
+      "source_url": "https://exemple.test/etude-churn-tpe",
+      "extrait": "désabonnement mensuel moyen de 4 %"
+    },
+    {
+      "id": "CPT-6",
+      "texte": "Le coût d'acquisition d'un client TPE est de 520 € en moyenne.",
+      "valeur": 520,
+      "unite": "€",
+      "type": "fait",
+      "base": [],
+      "source_url": "https://exemple.test/etude-cac-tpe",
+      "extrait": "coût d'acquisition moyen de 520 € par client"
+    },
+    {
+      "id": "CPT-8",
+      "texte": "Les charges fixes minimales d'un éditeur solo sont de 900 € par mois.",
+      "valeur": 900,
+      "unite": "€/mois",
+      "type": "fait",
+      "base": [],
+      "source_url": "https://exemple.test/guide-charges-editeur-solo",
+      "extrait": "charges fixes minimales de 900 € par mois"
+    }
+  ],
+  "hypotheses": {
+    "prix_mensuel_ht": {
+      "valeur": 149,
+      "ref": "CASE-prix"
+    },
+    "cout_variable_mensuel": {
+      "valeur": 41,
+      "ref": "CPT-3"
+    },
+    "churn_mensuel_pct": {
+      "valeur": 4,
+      "ref": "CPT-5"
+    },
+    "cac": {
+      "valeur": 520,
+      "ref": "CPT-6"
+    },
+    "charges_fixes_mensuelles": {
+      "valeur": 900,
+      "ref": "CPT-8"
+    },
+    "objectif_remuneration_mensuelle": {
+      "valeur": 2500,
+      "ref": "CONFIG"
+    }
+  },
+  "arguments": [
+    {
+      "id": "CPT-A1",
+      "sens": "pour",
+      "these": "La marge unitaire est confortable et le point mort est bas.",
+      "appuis": [
+        "CPT-3",
+        "CPT-8"
+      ]
+    },
+    {
+      "id": "CPT-A2",
+      "sens": "contre",
+      "these": "Le coût d'acquisition pèse sur les premiers mois.",
+      "appuis": [
+        "CPT-6"
+      ]
+    }
+  ],
+  "lecture": [
+    {
+      "ligne": "L3",
+      "phrase": "Ligne 3 : il reste 108 € par client une fois l'IA payée."
+    },
+    {
+      "ligne": "L10",
+      "phrase": "Ligne 10 : il faut 9 clients avant d'arrêter de perdre de l'argent."
+    }
+  ],
+  "vote": {
+    "note": 5.5,
+    "verdict": "PIVOT",
+    "raison_principale": "Les comptes tiennent ; l'acquisition reste le point faible.",
+    "appuis": [
+      "CPT-5",
+      "CPT-6"
+    ]
+  },
+  "replique": "Ligne par ligne, les comptes tiennent. Reste à trouver les clients.",
+  "lacunes": [
+    "Coût réel de consommation par restaurant : estimé, non mesuré."
+  ],
+  "alertes": []
+}

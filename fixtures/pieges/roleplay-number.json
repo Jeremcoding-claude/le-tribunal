@@ -1,0 +1,106 @@
+{
+  "piege": "roleplay-number",
+  "garde_fou": "G4",
+  "schema": "BriefCliente",
+  "rejet_a_l_etape": 5,
+  "rejet_par": "numbers.ts : « 10 minutes » ne vient d'aucune affirmation citée",
+  "donnee": {
+    "agent": "cliente",
+    "affirmations": [
+      {
+        "id": "CLI-1",
+        "texte": "La marge nette moyenne d'un restaurant indépendant est de 4 %.",
+        "valeur": 4,
+        "unite": "%",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/observatoire-restauration",
+        "extrait": "marge nette moyenne de 4 %"
+      },
+      {
+        "id": "CLI-2",
+        "texte": "Les restaurateurs consacrent en moyenne 120 € par mois aux logiciels.",
+        "valeur": 120,
+        "unite": "€/mois",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/enquete-budget-logiciel",
+        "extrait": "120 € par mois en logiciels"
+      },
+      {
+        "id": "CLI-3",
+        "texte": "Plus d'un gérant sur trois gère lui-même ses avis et ses réseaux.",
+        "valeur": 35,
+        "unite": "%",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/enquete-gerants",
+        "extrait": "35 % des gérants gèrent eux-mêmes leurs avis"
+      },
+      {
+        "id": "CLI-4",
+        "texte": "Prix mensuel acceptable pour un nouvel abonnement.",
+        "valeur": 79,
+        "unite": "€/mois",
+        "type": "estimation",
+        "base": [
+          "CLI-1",
+          "CLI-2"
+        ],
+        "source_url": null,
+        "extrait": null
+      }
+    ],
+    "arguments": [
+      {
+        "id": "CLI-A1",
+        "sens": "contre",
+        "these": "Ma marge est trop faible pour un abonnement de plus.",
+        "appuis": [
+          "CLI-1",
+          "CLI-2"
+        ]
+      },
+      {
+        "id": "CLI-A2",
+        "sens": "contre",
+        "these": "Je fais déjà la tâche moi-même.",
+        "appuis": [
+          "CLI-3"
+        ]
+      }
+    ],
+    "objections": [
+      {
+        "id": "CLI-O1",
+        "citation": "Je peux le faire moi-même le dimanche.",
+        "fait_appui": [
+          "CLI-3"
+        ]
+      }
+    ],
+    "ce_qui_me_ferait_payer": [
+      "Que ça me fasse gagner des couverts, pas juste du temps"
+    ],
+    "prix_acceptable": {
+      "valeur": 79,
+      "type": "estimation",
+      "base": [
+        "CLI-1",
+        "CLI-2"
+      ]
+    },
+    "vote": {
+      "note": 3.5,
+      "verdict": "PIVOT",
+      "raison_principale": "Prix trop haut pour ma marge ; je le fais déjà moi-même.",
+      "appuis": [
+        "CLI-1",
+        "CLI-3"
+      ]
+    },
+    "replique": "Je peux le faire moi-même en 10 minutes le dimanche.",
+    "lacunes": [],
+    "alertes": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "agent": "investisseur",
+  "vote": {
+    "note": 6.5,
+    "verdict": "GO",
+    "raison_principale": "La cible resserrée rend l'acquisition plus réaliste.",
+    "appuis": [
+      "INV-3",
+      "JUG-C1"
+    ]
+  },
+  "a_change_d_avis": true,
+  "pourquoi": "La cible corrigée répond à ma réserve sur le travail manuel.",
+  "cite": [
+    "changement:cible"
+  ]
+}

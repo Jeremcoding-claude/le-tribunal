@@ -1,0 +1,45 @@
+{
+  "saisie_confirmee": {
+    "nom": "Brigade IA",
+    "offre": "agents IA",
+    "cible": "restaurants indépendants",
+    "prix": "149 € par mois",
+    "ville": "Lyon",
+    "pays": "FR",
+    "probleme": null
+  },
+  "identification": {
+    "statut": "aucune_trace",
+    "correspondances": [],
+    "site_officiel": {
+      "url": null,
+      "extrait": null
+    },
+    "offre_publique": {
+      "resume": null,
+      "prix_affiche": null,
+      "source_url": null,
+      "extrait": null
+    },
+    "categorie_activite": {
+      "code_naf": "62.01Z",
+      "libelle": "Programmation informatique",
+      "source_url": "https://exemple.test/nomenclature-naf",
+      "extrait": "62.01Z Programmation informatique"
+    },
+    "zone": {
+      "commune": "Lyon",
+      "code_commune": "69123",
+      "departement": "Rhône",
+      "pays": "FR",
+      "population": {
+        "valeur": 520000,
+        "source_url": "https://exemple.test/commune-lyon"
+      }
+    },
+    "ecarts": [
+      "Le registre renvoie « BRIGADE DU GOURMET (FICTIVE) » (restauration, cessée) : nom différent et activité sans rapport ; non retenue."
+    ],
+    "alertes": []
+  }
+}

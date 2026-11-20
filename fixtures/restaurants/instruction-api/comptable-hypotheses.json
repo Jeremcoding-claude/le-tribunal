@@ -1,0 +1,92 @@
+{
+  "agent": "comptable",
+  "affirmations": [
+    {
+      "id": "CPT-1",
+      "texte": "Les frais du prestataire de paiement sont de 1,5 % par transaction.",
+      "valeur": 1.5,
+      "unite": "%",
+      "type": "fait",
+      "base": [],
+      "citation": "C1"
+    },
+    {
+      "id": "CPT-2",
+      "texte": "Un modèle de langage de taille moyenne coûte 3 € par million de tokens en entrée.",
+      "valeur": 3,
+      "unite": "€/M tokens",
+      "type": "fait",
+      "base": [],
+      "citation": "C1"
+    },
+    {
+      "id": "CPT-3",
+      "texte": "Coût variable par client et par mois (modèle, hébergement, paiement).",
+      "valeur": 41,
+      "unite": "€/mois",
+      "type": "estimation",
+      "base": [
+        "CPT-1",
+        "CPT-2"
+      ],
+      "citation": null
+    },
+    {
+      "id": "CPT-5",
+      "texte": "Le désabonnement mensuel moyen des logiciels pour TPE est de 4 %.",
+      "valeur": 4,
+      "unite": "%/mois",
+      "type": "fait",
+      "base": [],
+      "citation": "C1"
+    },
+    {
+      "id": "CPT-6",
+      "texte": "Le coût d'acquisition d'un client TPE est de 520 € en moyenne.",
+      "valeur": 520,
+      "unite": "€",
+      "type": "fait",
+      "base": [],
+      "citation": "C1"
+    },
+    {
+      "id": "CPT-8",
+      "texte": "Les charges fixes minimales d'un éditeur solo sont de 900 € par mois.",
+      "valeur": 900,
+      "unite": "€/mois",
+      "type": "fait",
+      "base": [],
+      "citation": "C1"
+    }
+  ],
+  "hypotheses": {
+    "prix_mensuel_ht": {
+      "valeur": 149,
+      "ref": "CASE-prix"
+    },
+    "cout_variable_mensuel": {
+      "valeur": 41,
+      "ref": "CPT-3"
+    },
+    "churn_mensuel_pct": {
+      "valeur": 4,
+      "ref": "CPT-5"
+    },
+    "cac": {
+      "valeur": 520,
+      "ref": "CPT-6"
+    },
+    "charges_fixes_mensuelles": {
+      "valeur": 900,
+      "ref": "CPT-8"
+    },
+    "objectif_remuneration_mensuelle": {
+      "valeur": 2500,
+      "ref": "CONFIG"
+    }
+  },
+  "lacunes": [
+    "Coût réel de consommation par restaurant : estimé, non mesuré."
+  ],
+  "alertes": []
+}

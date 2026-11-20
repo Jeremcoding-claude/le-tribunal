@@ -1,0 +1,23 @@
+{
+  "piege": "debat-sans-conteste",
+  "garde_fou": "G2 (no-contest)",
+  "schema": "DebateTurn",
+  "attendu_message": "conteste",
+  "donnee": {
+    "agent": "cliente",
+    "tour": 1,
+    "repliques": [
+      {
+        "type": "concede",
+        "vise": "INV-A1",
+        "texte": "Je peux le faire moi-même le dimanche.",
+        "appuis": [
+          "CLI-3",
+          "CLI-1"
+        ]
+      }
+    ],
+    "proposition": null,
+    "nouvelles_affirmations": []
+  }
+}

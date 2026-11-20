@@ -1,0 +1,21 @@
+{
+  "piege": "revote-flip-sans-cite",
+  "garde_fou": "G2 (flip-without-reason)",
+  "schema": "Revote",
+  "attendu_message": "change d'avis",
+  "donnee": {
+    "agent": "cliente",
+    "vote": {
+      "note": 5.5,
+      "verdict": "PIVOT",
+      "raison_principale": "Le prix corrigé répond à mon objection.",
+      "appuis": [
+        "CLI-1",
+        "JUG-C1"
+      ]
+    },
+    "a_change_d_avis": true,
+    "pourquoi": "Le prix corrigé répond à mon objection CLI-O1.",
+    "cite": []
+  }
+}

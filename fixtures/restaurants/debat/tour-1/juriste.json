@@ -1,0 +1,17 @@
+{
+  "agent": "juriste",
+  "tour": 1,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "INV-A1",
+      "texte": "Un marché vaste n'efface pas l'obligation d'un contrat de sous-traitance.",
+      "appuis": [
+        "JUR-2",
+        "JUR-3"
+      ]
+    }
+  ],
+  "proposition": null,
+  "nouvelles_affirmations": []
+}

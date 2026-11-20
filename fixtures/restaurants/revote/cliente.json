@@ -1,0 +1,18 @@
+{
+  "agent": "cliente",
+  "vote": {
+    "note": 5.5,
+    "verdict": "PIVOT",
+    "raison_principale": "Le prix corrigé répond à mon objection.",
+    "appuis": [
+      "CLI-1",
+      "JUG-C1"
+    ]
+  },
+  "a_change_d_avis": true,
+  "pourquoi": "Le prix corrigé répond à mon objection CLI-O1.",
+  "cite": [
+    "changement:prix",
+    "CLI-O1"
+  ]
+}

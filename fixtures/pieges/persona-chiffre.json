@@ -1,0 +1,55 @@
+{
+  "piege": "persona-chiffre",
+  "garde_fou": "§3.3.4",
+  "schema": "MiseEnEtat",
+  "attendu_message": "aucun chiffre permis",
+  "donnee": {
+    "case_file": {
+      "nom": "Brigade IA",
+      "cible": "Restaurants indépendants (brasseries, bistrots) à Lyon",
+      "probleme": "non précisé",
+      "probleme_origine": "non_precise",
+      "solution": "Agents IA qui exécutent des tâches administratives pour le restaurant",
+      "modele_revenu": "abonnement",
+      "prix": {
+        "montant": 149,
+        "devise": "EUR",
+        "periode": "mois",
+        "ht_ou_ttc": "inconnu",
+        "origine": "saisie"
+      },
+      "zone": "Lyon (Rhône), FR",
+      "pays": "FR",
+      "statut_identification": "aucune_trace",
+      "canal_presume": "non précisé",
+      "differenciation": null,
+      "hypotheses_implicites": [
+        "Le gérant perd du temps sur l'administratif",
+        "Le restaurateur a un smartphone ou un ordinateur"
+      ],
+      "affirmations_a_verifier": [],
+      "inconnues": [
+        "canal de distribution"
+      ],
+      "mots_retires": []
+    },
+    "persona_cliente": {
+      "prenom": "Sandrine",
+      "role": "Gérante et propriétaire",
+      "etablissement": "Brasserie de quartier, service midi et soir",
+      "ville": "Lyon",
+      "rapport_au_numerique": "Se méfie des abonnements de plus de 20 € par mois",
+      "journee_type": "Ouverture 9 h, coup de feu midi, compta le dimanche",
+      "registre": "Familier, direct, phrases courtes",
+      "a_verifier_par_la_cliente": [
+        "budget moyen des restaurateurs pour les logiciels",
+        "marge nette moyenne du secteur",
+        "part des restaurateurs qui gèrent eux-mêmes leurs réseaux"
+      ]
+    },
+    "champs_manquants": [
+      "probleme",
+      "canal"
+    ]
+  }
+}

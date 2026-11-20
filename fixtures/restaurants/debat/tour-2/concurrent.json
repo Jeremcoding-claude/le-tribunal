@@ -1,0 +1,25 @@
+{
+  "agent": "concurrent",
+  "tour": 2,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "CPT-A1",
+      "texte": "Une marge confortable attire justement les copieurs.",
+      "appuis": [
+        "CON-1",
+        "CON-4"
+      ]
+    }
+  ],
+  "proposition": {
+    "id": "CON-P1",
+    "champ": "canal",
+    "texte": "S'adosser à un éditeur de caisse pour fermer l'accès.",
+    "appuis": [
+      "CON-3",
+      "CON-4"
+    ]
+  },
+  "nouvelles_affirmations": []
+}

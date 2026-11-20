@@ -1,0 +1,303 @@
+[
+  {
+    "test": "invented-number",
+    "garde_fou": "G1",
+    "fixture": null,
+    "etape_ecriture": 5,
+    "note": "URL absente des résultats de l'appel : dépend de toolEvidence (étape 4)"
+  },
+  {
+    "test": "extract-mismatch",
+    "garde_fou": "G1",
+    "fixture": null,
+    "etape_ecriture": 5,
+    "note": "Extrait absent de la page : dépend de pages/ et de verifier.ts"
+  },
+  {
+    "test": "value-not-in-extract",
+    "garde_fou": "G1",
+    "fixture": "value-not-in-extract",
+    "etape_ecriture": 5,
+    "note": ""
+  },
+  {
+    "test": "juriste-non-officiel",
+    "garde_fou": "G1",
+    "fixture": "juriste-non-officiel",
+    "etape_ecriture": 5,
+    "note": ""
+  },
+  {
+    "test": "sealed-votes",
+    "garde_fou": "G2",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": "Texte des prompts de débat : étape 6"
+  },
+  {
+    "test": "no-contest",
+    "garde_fou": "G2",
+    "fixture": "debat-sans-conteste",
+    "etape_ecriture": 2,
+    "note": ""
+  },
+  {
+    "test": "copycat",
+    "garde_fou": "G2",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": "Deux dossiers aux arguments recopiés"
+  },
+  {
+    "test": "flip-without-reason",
+    "garde_fou": "G2",
+    "fixture": "revote-flip-sans-cite",
+    "etape_ecriture": 2,
+    "note": ""
+  },
+  {
+    "test": "flattering-input",
+    "garde_fou": "G3",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": "Saisie flatteuse et version neutre : étape 6"
+  },
+  {
+    "test": "raw-text-leak",
+    "garde_fou": "G3",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "roleplay-number",
+    "garde_fou": "G4",
+    "fixture": "roleplay-number",
+    "etape_ecriture": 5,
+    "note": ""
+  },
+  {
+    "test": "judge-new-number",
+    "garde_fou": "G4",
+    "fixture": "judge-new-number",
+    "etape_ecriture": 5,
+    "note": ""
+  },
+  {
+    "test": "ledger-mismatch",
+    "garde_fou": "G4",
+    "fixture": "ledger-mismatch",
+    "etape_ecriture": 5,
+    "note": ""
+  },
+  {
+    "test": "injection-page",
+    "garde_fou": "G5",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": "Page MOCK « Ignore tes règles… » à créer avec sanitize.ts"
+  },
+  {
+    "test": "injection-input",
+    "garde_fou": "G5",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "budget-cap",
+    "garde_fou": "G6",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "max-uses",
+    "garde_fou": "G6",
+    "fixture": null,
+    "etape_ecriture": 4,
+    "note": ""
+  },
+  {
+    "test": "juror-crash",
+    "garde_fou": "G7",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "two-crashes",
+    "garde_fou": "G7",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "resume",
+    "garde_fou": "G7",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "redact",
+    "garde_fou": "G8",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "client-bundle",
+    "garde_fou": "G8",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": "Après next build"
+  },
+  {
+    "test": "no-public-env",
+    "garde_fou": "G8",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "registry-strip",
+    "garde_fou": "G9",
+    "fixture": "registre.json",
+    "etape_ecriture": 4,
+    "note": "registre.json (avec dirigeants) est la fixture d'entrée ; test écrit à l'étape 4"
+  },
+  {
+    "test": "sole-trader-mask",
+    "garde_fou": "G9",
+    "fixture": null,
+    "etape_ecriture": 4,
+    "note": ""
+  },
+  {
+    "test": "output-pii",
+    "garde_fou": "G9",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "own-site-injection",
+    "garde_fou": "G9",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "intake-3-parts",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 4,
+    "note": ""
+  },
+  {
+    "test": "intake-commas",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 4,
+    "note": ""
+  },
+  {
+    "test": "greffier-adds-field",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 7,
+    "note": ""
+  },
+  {
+    "test": "homonyms",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 4,
+    "note": ""
+  },
+  {
+    "test": "intake-price-element",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 4,
+    "note": ""
+  },
+  {
+    "test": "intake-reference",
+    "garde_fou": "G10",
+    "fixture": "../restaurants/saisie.txt",
+    "etape_ecriture": 4,
+    "note": ""
+  },
+  {
+    "test": "intake-problem",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 4,
+    "note": ""
+  },
+  {
+    "test": "missing-price-question",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 6,
+    "note": ""
+  },
+  {
+    "test": "homonyms-question",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 6,
+    "note": ""
+  },
+  {
+    "test": "max-questions",
+    "garde_fou": "G10",
+    "fixture": null,
+    "etape_ecriture": 6,
+    "note": ""
+  },
+  {
+    "test": "proposal-without-support",
+    "garde_fou": "G11",
+    "fixture": "proposition-sans-appui",
+    "etape_ecriture": 2,
+    "note": "Aussi : proposition-tour-1, proposition-mauvais-agent, ruling-source-inconnue"
+  },
+  {
+    "test": "prenoms-prompts",
+    "garde_fou": "G12",
+    "fixture": null,
+    "etape_ecriture": 3,
+    "note": "Test sur prompts/ : étape 3"
+  },
+  {
+    "test": "persona-prenom",
+    "garde_fou": "G12",
+    "fixture": "persona-initiale-n",
+    "etape_ecriture": 2,
+    "note": "Aussi : persona-prenom-agent"
+  },
+  {
+    "test": "docker-secrets",
+    "garde_fou": "G13",
+    "fixture": null,
+    "etape_ecriture": 12,
+    "note": ""
+  },
+  {
+    "test": "env",
+    "garde_fou": "G13",
+    "fixture": null,
+    "etape_ecriture": 12,
+    "note": ""
+  },
+  {
+    "test": "vote-scelle-affichage",
+    "garde_fou": "G14",
+    "fixture": "vote-scelle-avec-note",
+    "etape_ecriture": 2,
+    "note": "Schéma d'événement : étape 2 ; affichage : étape 11"
+  }
+]

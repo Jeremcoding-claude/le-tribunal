@@ -1,0 +1,151 @@
+{
+  "piege": "ruling-4-changements",
+  "garde_fou": "§3.9",
+  "schema": "Ruling",
+  "attendu_chemin": "plan_corrige.changements",
+  "donnee": {
+    "contradictions": [
+      {
+        "id": "JUG-C1",
+        "entre": [
+          "investisseur",
+          "cliente"
+        ],
+        "sujet": "Capacité des restaurateurs à payer l'abonnement",
+        "position_retenue": "cliente",
+        "attendu": "Attendu que la marge nette du secteur est faible et que le budget logiciel est déjà engagé,",
+        "appuis": [
+          "CLI-1",
+          "CLI-2"
+        ]
+      }
+    ],
+    "reponses_objections": [
+      {
+        "objection": "CLI-O1",
+        "decision": "changement",
+        "justification": "Le prix d'entrée passe sous le budget logiciel actuel des restaurateurs.",
+        "appuis": [
+          "CLI-2"
+        ]
+      },
+      {
+        "objection": "CON-A1",
+        "decision": "changement",
+        "justification": "La cible se resserre sur les restaurants équipés, où l'accès est un fossé.",
+        "appuis": [
+          "INV-3"
+        ]
+      },
+      {
+        "objection": "CPT-A2",
+        "decision": "refus",
+        "justification": "Le coût d'acquisition reste supportable avec la marge unitaire calculée.",
+        "appuis": [
+          "CPT-6"
+        ]
+      }
+    ],
+    "plan_corrige": {
+      "changements": [
+        {
+          "champ": "prix",
+          "avant": "149 € par mois",
+          "apres": "79 € par mois",
+          "repond_a": [
+            "CLI-O1",
+            "CPT-A2"
+          ],
+          "source": "CLI-P1",
+          "justification": "Le prix d'entrée passe sous le budget logiciel actuel des restaurateurs.",
+          "appuis": [
+            "CLI-2",
+            "CLI-4"
+          ]
+        },
+        {
+          "champ": "cible",
+          "avant": "Restaurants indépendants à Lyon",
+          "apres": "Restaurants indépendants équipés d'une caisse connectée, à Lyon",
+          "repond_a": [
+            "CON-A1"
+          ],
+          "source": "INV-P1",
+          "justification": "Les restaurants équipés sont atteignables ; les autres demandent un travail manuel.",
+          "appuis": [
+            "INV-3",
+            "INV-2"
+          ]
+        },
+        {
+          "champ": "offre",
+          "avant": "Agents IA seuls",
+          "apres": "Agents IA avec contrat de sous-traitance des données",
+          "repond_a": [
+            "JUR-A1"
+          ],
+          "source": "JUR-P1",
+          "justification": "Le contrat répond au risque signalé sur les données personnelles.",
+          "appuis": [
+            "JUR-2",
+            "JUR-3"
+          ]
+        },
+        {
+          "champ": "zone",
+          "avant": "149 € par mois",
+          "apres": "79 € par mois",
+          "repond_a": [
+            "CLI-O1",
+            "CPT-A2"
+          ],
+          "source": "juge",
+          "justification": "Le prix d'entrée passe sous le budget logiciel actuel des restaurateurs.",
+          "appuis": [
+            "CLI-2",
+            "CLI-4"
+          ]
+        }
+      ],
+      "case_file_v2": {
+        "nom": "Brigade IA",
+        "cible": "Restaurants indépendants équipés d'une caisse connectée, à Lyon",
+        "probleme": "non précisé",
+        "probleme_origine": "non_precise",
+        "solution": "Agents IA avec contrat de sous-traitance des données, pour le restaurant",
+        "modele_revenu": "abonnement",
+        "prix": {
+          "montant": 79,
+          "devise": "EUR",
+          "periode": "mois",
+          "ht_ou_ttc": "inconnu",
+          "origine": "saisie"
+        },
+        "zone": "Lyon (Rhône), FR",
+        "pays": "FR",
+        "statut_identification": "aucune_trace",
+        "canal_presume": "non précisé",
+        "differenciation": null,
+        "hypotheses_implicites": [
+          "Le gérant perd du temps sur l'administratif",
+          "Le restaurateur a un smartphone ou un ordinateur"
+        ],
+        "affirmations_a_verifier": [],
+        "inconnues": [
+          "canal de distribution"
+        ],
+        "mots_retires": []
+      }
+    },
+    "conditions_pour_lancer": [
+      {
+        "condition": "Obtenir 9 restaurants pilotes payants avant tout budget d'acquisition",
+        "mesurable": true,
+        "appuis": [
+          "CPT-L10"
+        ]
+      }
+    ],
+    "par_ces_motifs": "Par ces motifs, le plan est corrigé comme indiqué ci-dessus ; les jurés sont invités à revoter."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "agent": "investisseur",
+  "tour": 1,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "CLI-A1",
+      "texte": "Votre marge est faible ; le marché, lui, est vaste et croît.",
+      "appuis": [
+        "INV-1",
+        "INV-4"
+      ]
+    }
+  ],
+  "proposition": null,
+  "nouvelles_affirmations": []
+}

@@ -1,0 +1,134 @@
+{
+  "piege": "concurrent-delai-incoherent",
+  "garde_fou": "§3.7",
+  "schema": "BriefConcurrent",
+  "attendu_message": "plan de copie totalise",
+  "donnee": {
+    "agent": "concurrent",
+    "affirmations": [
+      {
+        "id": "CON-1",
+        "texte": "Un concurrent propose un agent de réservation à 99 € par mois.",
+        "valeur": 99,
+        "unite": "€/mois",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/alpha/tarifs",
+        "extrait": "agent de réservation à 99 € par mois"
+      },
+      {
+        "id": "CON-2",
+        "texte": "Un second outil de gestion des avis coûte 59 € par mois.",
+        "valeur": 59,
+        "unite": "€/mois",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/beta/tarifs",
+        "extrait": "gestion des avis à 59 € par mois"
+      },
+      {
+        "id": "CON-3",
+        "texte": "Des outils sans code permettent de recréer un agent de ce type.",
+        "valeur": null,
+        "unite": "",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/outil-sans-code",
+        "extrait": "assemblez un agent sans code"
+      },
+      {
+        "id": "CON-4",
+        "texte": "Un outil du marché assemble un agent de réservation en 5 jours.",
+        "valeur": 5,
+        "unite": "jours",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/outil-sans-code",
+        "extrait": "agent de réservation assemblé en 5 jours"
+      },
+      {
+        "id": "CON-5",
+        "texte": "Le premier concurrent a levé 3 millions d'euros en 2025.",
+        "valeur": 3000000,
+        "unite": "€",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/annonce-levee-alpha",
+        "extrait": "levée de 3 000 000 € en 2025"
+      }
+    ],
+    "arguments": [
+      {
+        "id": "CON-A1",
+        "sens": "contre",
+        "these": "Des concurrents existent déjà à un prix plus bas.",
+        "appuis": [
+          "CON-1",
+          "CON-2"
+        ]
+      },
+      {
+        "id": "CON-A2",
+        "sens": "contre",
+        "these": "La copie est possible avec des briques du marché.",
+        "appuis": [
+          "CON-3",
+          "CON-4"
+        ]
+      }
+    ],
+    "concurrents": [
+      {
+        "nom": "Concurrent Alpha (fictif)",
+        "prix": "CON-1",
+        "url_tarifs": "https://exemple.test/alpha/tarifs"
+      },
+      {
+        "nom": "Concurrent Beta (fictif)",
+        "prix": "CON-2",
+        "url_tarifs": "https://exemple.test/beta/tarifs"
+      }
+    ],
+    "plan_de_copie": [
+      {
+        "etape": "Assembler l'agent avec un outil du marché",
+        "duree_jours": 5,
+        "type": "estimation",
+        "base": [
+          "CON-4"
+        ]
+      },
+      {
+        "etape": "Brancher la caisse et la réservation",
+        "duree_jours": 10,
+        "type": "estimation",
+        "base": [
+          "CON-3"
+        ]
+      }
+    ],
+    "delai_copie_semaines": {
+      "valeur": 9,
+      "type": "estimation",
+      "base": [
+        "CON-3",
+        "CON-4"
+      ]
+    },
+    "fosse_defendable": [
+      "Aucun identifié"
+    ],
+    "vote": {
+      "note": 4,
+      "verdict": "NO-GO",
+      "raison_principale": "Concurrents moins chers et copie rapide, sans fossé.",
+      "appuis": [
+        "CON-1",
+        "CON-4"
+      ]
+    },
+    "replique": "Moi, je te copie vite. Regarde : tout est déjà sur étagère.",
+    "lacunes": [],
+    "alertes": []
+  }
+}

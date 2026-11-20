@@ -1,0 +1,42 @@
+{
+  "agent": "comptable",
+  "arguments": [
+    {
+      "id": "CPT-A1",
+      "sens": "pour",
+      "these": "La marge unitaire est confortable et le point mort est bas.",
+      "appuis": [
+        "CPT-3",
+        "CPT-8"
+      ]
+    },
+    {
+      "id": "CPT-A2",
+      "sens": "contre",
+      "these": "Le coût d'acquisition pèse sur les premiers mois.",
+      "appuis": [
+        "CPT-6"
+      ]
+    }
+  ],
+  "lecture": [
+    {
+      "ligne": "L3",
+      "phrase": "Ligne 3 : il reste 108 € par client une fois l'IA payée."
+    },
+    {
+      "ligne": "L10",
+      "phrase": "Ligne 10 : il faut 9 clients avant d'arrêter de perdre de l'argent."
+    }
+  ],
+  "vote": {
+    "note": 5.5,
+    "verdict": "PIVOT",
+    "raison_principale": "Les comptes tiennent ; l'acquisition reste le point faible.",
+    "appuis": [
+      "CPT-5",
+      "CPT-6"
+    ]
+  },
+  "replique": "Ligne par ligne, les comptes tiennent. Reste à trouver les clients."
+}

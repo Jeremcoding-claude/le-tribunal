@@ -1,0 +1,25 @@
+{
+  "agent": "comptable",
+  "tour": 2,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "CLI-A1",
+      "texte": "La marge unitaire permet un prix d'entrée plus bas.",
+      "appuis": [
+        "CPT-3",
+        "CPT-8"
+      ]
+    }
+  ],
+  "proposition": {
+    "id": "CPT-P1",
+    "champ": "prix",
+    "texte": "Offrir un palier d'entrée sous le budget logiciel actuel.",
+    "appuis": [
+      "CPT-3",
+      "CPT-6"
+    ]
+  },
+  "nouvelles_affirmations": []
+}

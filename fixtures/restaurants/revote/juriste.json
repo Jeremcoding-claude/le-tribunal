@@ -1,0 +1,17 @@
+{
+  "agent": "juriste",
+  "vote": {
+    "note": 5.5,
+    "verdict": "PIVOT",
+    "raison_principale": "Le contrat répond au risque, le reste demeure à cadrer.",
+    "appuis": [
+      "JUR-2",
+      "JUR-3"
+    ]
+  },
+  "a_change_d_avis": true,
+  "pourquoi": "Le contrat de sous-traitance est maintenant dans l'offre.",
+  "cite": [
+    "changement:offre"
+  ]
+}

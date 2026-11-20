@@ -1,0 +1,17 @@
+{
+  "agent": "cliente",
+  "tour": 1,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "INV-A1",
+      "texte": "Je peux le faire moi-même le dimanche.",
+      "appuis": [
+        "CLI-3",
+        "CLI-1"
+      ]
+    }
+  ],
+  "proposition": null,
+  "nouvelles_affirmations": []
+}

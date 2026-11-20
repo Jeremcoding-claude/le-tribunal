@@ -1,0 +1,22 @@
+{
+  "https://exemple.test/insee-restauration": "exemple_test_insee_restauration.txt",
+  "https://exemple.test/etude-equipement-caisse": "exemple_test_etude_equipement_caisse.txt",
+  "https://exemple.test/barometre-outils-restauration": "exemple_test_barometre_outils_restauration.txt",
+  "https://exemple.test/tarifs-paiement": "exemple_test_tarifs_paiement.txt",
+  "https://exemple.test/grille-tarifaire-modele": "exemple_test_grille_tarifaire_modele.txt",
+  "https://exemple.test/etude-churn-tpe": "exemple_test_etude_churn_tpe.txt",
+  "https://exemple.test/etude-cac-tpe": "exemple_test_etude_cac_tpe.txt",
+  "https://exemple.test/guide-charges-editeur-solo": "exemple_test_guide_charges_editeur_solo.txt",
+  "https://www.legifrance.gouv.fr/mock/rgpd-art-83": "www_legifrance_gouv_fr_mock_rgpd_art_83.txt",
+  "https://www.legifrance.gouv.fr/mock/rgpd-art-28": "www_legifrance_gouv_fr_mock_rgpd_art_28.txt",
+  "https://www.legifrance.gouv.fr/mock/rgpd-art-30": "www_legifrance_gouv_fr_mock_rgpd_art_30.txt",
+  "https://exemple.test/alpha/tarifs": "exemple_test_alpha_tarifs.txt",
+  "https://exemple.test/beta/tarifs": "exemple_test_beta_tarifs.txt",
+  "https://exemple.test/outil-sans-code": "exemple_test_outil_sans_code.txt",
+  "https://exemple.test/annonce-levee-alpha": "exemple_test_annonce_levee_alpha.txt",
+  "https://exemple.test/observatoire-restauration": "exemple_test_observatoire_restauration.txt",
+  "https://exemple.test/enquete-budget-logiciel": "exemple_test_enquete_budget_logiciel.txt",
+  "https://exemple.test/enquete-gerants": "exemple_test_enquete_gerants.txt",
+  "https://exemple.test/nomenclature-naf": "exemple_test_nomenclature_naf.txt",
+  "https://exemple.test/commune-lyon": "exemple_test_commune_lyon.txt"
+}

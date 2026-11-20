@@ -1,0 +1,17 @@
+{
+  "agent": "concurrent",
+  "tour": 1,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "INV-A1",
+      "texte": "Ton marché, je le prends vite avec les briques du marché.",
+      "appuis": [
+        "CON-4",
+        "CON-1"
+      ]
+    }
+  ],
+  "proposition": null,
+  "nouvelles_affirmations": []
+}

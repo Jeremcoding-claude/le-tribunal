@@ -1,0 +1,25 @@
+{
+  "agent": "juriste",
+  "tour": 2,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "CON-A2",
+      "texte": "Copier l'outil sans contrat de sous-traitance expose aussi le copieur.",
+      "appuis": [
+        "JUR-2",
+        "JUR-3"
+      ]
+    }
+  ],
+  "proposition": {
+    "id": "JUR-P1",
+    "champ": "offre",
+    "texte": "Livrer un contrat de sous-traitance des données avec l'abonnement.",
+    "appuis": [
+      "JUR-2",
+      "JUR-3"
+    ]
+  },
+  "nouvelles_affirmations": []
+}

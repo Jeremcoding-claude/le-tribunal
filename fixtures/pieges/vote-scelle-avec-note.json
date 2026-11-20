@@ -1,0 +1,14 @@
+{
+  "piege": "vote-scelle-avec-note",
+  "garde_fou": "G14",
+  "schema": "TrialEvent",
+  "attendu_message": "note",
+  "donnee": {
+    "trial_id": "t1",
+    "seq": 3,
+    "ts": "2026-11-20T10:00:00.000Z",
+    "type": "vote_sealed",
+    "agent": "investisseur",
+    "note": 6
+  }
+}

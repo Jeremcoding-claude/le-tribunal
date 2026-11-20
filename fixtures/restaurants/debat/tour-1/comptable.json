@@ -1,0 +1,17 @@
+{
+  "agent": "comptable",
+  "tour": 1,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "CON-A1",
+      "texte": "Le coût d'acquisition reste couvert par la marge unitaire.",
+      "appuis": [
+        "CPT-3",
+        "CPT-6"
+      ]
+    }
+  ],
+  "proposition": null,
+  "nouvelles_affirmations": []
+}

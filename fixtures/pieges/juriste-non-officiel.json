@@ -1,0 +1,87 @@
+{
+  "piege": "juriste-non-officiel",
+  "garde_fou": "G1",
+  "schema": "BriefJuriste",
+  "rejet_a_l_etape": 5,
+  "rejet_par": "verifier.ts : domaine hors de GUARDRAILS.search.juristeDomains",
+  "donnee": {
+    "agent": "juriste",
+    "affirmations": [
+      {
+        "id": "JUR-1",
+        "texte": "Les amendes maximales atteignent 4 % du chiffre d'affaires annuel mondial.",
+        "valeur": 4,
+        "unite": "%",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/forum-juridique/sujet-12",
+        "extrait": "jusqu'à 4 % du chiffre d'affaires annuel mondial"
+      },
+      {
+        "id": "JUR-2",
+        "texte": "Le traitement pour le compte d'un restaurant exige un contrat de sous-traitance.",
+        "valeur": null,
+        "unite": "",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://www.legifrance.gouv.fr/mock/rgpd-art-28",
+        "extrait": "le traitement par un sous-traitant est régi par un contrat de sous-traitance"
+      },
+      {
+        "id": "JUR-3",
+        "texte": "Un registre des activités de traitement doit être tenu.",
+        "valeur": null,
+        "unite": "",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://www.legifrance.gouv.fr/mock/rgpd-art-30",
+        "extrait": "chaque sous-traitant tient un registre des activités de traitement"
+      }
+    ],
+    "arguments": [
+      {
+        "id": "JUR-A1",
+        "sens": "contre",
+        "these": "Les données des clients du restaurant exigent un contrat de sous-traitance.",
+        "appuis": [
+          "JUR-2",
+          "JUR-3"
+        ]
+      },
+      {
+        "id": "JUR-A2",
+        "sens": "pour",
+        "these": "Le risque se maîtrise par des mesures connues.",
+        "appuis": [
+          "JUR-3"
+        ]
+      }
+    ],
+    "risques": [
+      {
+        "id": "JUR-R1",
+        "intitule": "Traitement de données personnelles des clients du restaurant",
+        "texte_officiel": "JUR-2",
+        "gravite": "moyenne",
+        "mesure_reduction": "Contrat de sous-traitance, registre des traitements",
+        "appuis": [
+          "JUR-2",
+          "JUR-3"
+        ]
+      }
+    ],
+    "avertissement": "Ceci est un signalement de risques sourcés, pas un avis juridique.",
+    "vote": {
+      "note": 5,
+      "verdict": "PIVOT",
+      "raison_principale": "Risque moyen, maîtrisable, mais à cadrer par contrat.",
+      "appuis": [
+        "JUR-2",
+        "JUR-3"
+      ]
+    },
+    "replique": "Je ne vous donne pas un avis ; je vous lis le texte : un contrat de sous-traitance est exigé.",
+    "lacunes": [],
+    "alertes": []
+  }
+}

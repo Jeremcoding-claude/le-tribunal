@@ -1,0 +1,105 @@
+{
+  "piege": "id-hors-agent",
+  "garde_fou": "G4",
+  "schema": "BriefInvestisseur",
+  "attendu_message": "n'emploie que des ids INV",
+  "donnee": {
+    "agent": "investisseur",
+    "affirmations": [
+      {
+        "id": "CPT-1",
+        "texte": "Le pays compte 160 000 restaurants indépendants.",
+        "valeur": 160000,
+        "unite": "établissements",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/insee-restauration",
+        "extrait": "160 000 établissements de restauration indépendants"
+      },
+      {
+        "id": "INV-2",
+        "texte": "Part atteignable : restaurants équipés d'un logiciel de caisse.",
+        "valeur": 48000,
+        "unite": "établissements",
+        "type": "estimation",
+        "base": [
+          "INV-1",
+          "INV-3"
+        ],
+        "source_url": null,
+        "extrait": null
+      },
+      {
+        "id": "INV-3",
+        "texte": "Trois restaurants indépendants sur quatre utilisent un logiciel de caisse.",
+        "valeur": 75,
+        "unite": "%",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/etude-equipement-caisse",
+        "extrait": "75 % des restaurants indépendants utilisent un logiciel de caisse"
+      },
+      {
+        "id": "INV-4",
+        "texte": "Les outils numériques pour restaurants progressent chaque année (2025).",
+        "valeur": 8,
+        "unite": "%/an",
+        "type": "fait",
+        "base": [],
+        "source_url": "https://exemple.test/barometre-outils-restauration",
+        "extrait": "croissance de 8 % par an en 2025"
+      },
+      {
+        "id": "INV-5",
+        "texte": "Prix saisi par l'utilisateur : 149 € par mois.",
+        "valeur": 149,
+        "unite": "€/mois",
+        "type": "donnee_utilisateur",
+        "base": [],
+        "source_url": null,
+        "extrait": null
+      }
+    ],
+    "arguments": [
+      {
+        "id": "INV-A1",
+        "sens": "pour",
+        "these": "Un marché large, un abonnement simple et une demande qui croît.",
+        "appuis": [
+          "CPT-1",
+          "INV-4"
+        ]
+      },
+      {
+        "id": "INV-A2",
+        "sens": "contre",
+        "these": "Le travail manuel par client limite le passage à l'échelle.",
+        "appuis": [
+          "INV-2",
+          "INV-5"
+        ]
+      }
+    ],
+    "vote": {
+      "note": 6,
+      "verdict": "GO",
+      "raison_principale": "Le marché existe et croît ; l'échelle dépend de l'automatisation.",
+      "appuis": [
+        "CPT-1",
+        "INV-4"
+      ]
+    },
+    "replique": "Montrez-moi le marché : il existe, mais il faut le prouver client par client.",
+    "lacunes": [
+      "Part des restaurants prêts à payer un abonnement : introuvable."
+    ],
+    "alertes": [],
+    "marche": {
+      "tam_unites": "INV-1",
+      "sam_unites": "INV-2",
+      "croissance_annuelle_pct": "INV-4",
+      "levier_echelle": "moyen",
+      "levier_echelle_justification": "INV-A2"
+    }
+  }
+}

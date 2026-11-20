@@ -1,0 +1,25 @@
+{
+  "agent": "cliente",
+  "tour": 2,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "INV-A1",
+      "texte": "Un abonnement de plus, je n'en veux pas sans gain de couverts.",
+      "appuis": [
+        "CLI-2",
+        "CLI-1"
+      ]
+    }
+  ],
+  "proposition": {
+    "id": "CLI-P1",
+    "champ": "prix",
+    "texte": "Un prix d'entrée sous mon budget logiciel actuel.",
+    "appuis": [
+      "CLI-2",
+      "CLI-4"
+    ]
+  },
+  "nouvelles_affirmations": []
+}

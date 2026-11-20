@@ -1,0 +1,25 @@
+{
+  "agent": "investisseur",
+  "tour": 2,
+  "repliques": [
+    {
+      "type": "conteste",
+      "vise": "CON-A2",
+      "texte": "La copie existe, mais l'accès aux restaurants équipés reste un fossé.",
+      "appuis": [
+        "INV-3",
+        "INV-2"
+      ]
+    }
+  ],
+  "proposition": {
+    "id": "INV-P1",
+    "champ": "cible",
+    "texte": "Viser d'abord les restaurants équipés d'une caisse connectée.",
+    "appuis": [
+      "INV-3",
+      "INV-2"
+    ]
+  },
+  "nouvelles_affirmations": []
+}

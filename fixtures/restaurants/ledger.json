@@ -1,0 +1,153 @@
+[
+  {
+    "ligne": "L1",
+    "libelle": "Prix mensuel HT",
+    "formule": "P",
+    "valeur": 149,
+    "statut": "calcule",
+    "depuis": [
+      "CASE-prix"
+    ]
+  },
+  {
+    "ligne": "L2",
+    "libelle": "Coût variable par client et par mois",
+    "formule": "Cv",
+    "valeur": 41,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-3"
+    ]
+  },
+  {
+    "ligne": "L3",
+    "libelle": "Marge unitaire",
+    "formule": "P − Cv",
+    "valeur": 108,
+    "statut": "calcule",
+    "depuis": [
+      "CASE-prix",
+      "CPT-3"
+    ]
+  },
+  {
+    "ligne": "L4",
+    "libelle": "Durée de vie moyenne d'un client (mois)",
+    "formule": "1 / churn",
+    "valeur": 25,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-5"
+    ]
+  },
+  {
+    "ligne": "L5",
+    "libelle": "LTV",
+    "formule": "marge unitaire × durée de vie",
+    "valeur": 2700,
+    "statut": "calcule",
+    "depuis": [
+      "CASE-prix",
+      "CPT-3",
+      "CPT-5"
+    ]
+  },
+  {
+    "ligne": "L6",
+    "libelle": "CAC",
+    "formule": "CAC",
+    "valeur": 520,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-6"
+    ]
+  },
+  {
+    "ligne": "L7",
+    "libelle": "Ratio LTV / CAC",
+    "formule": "L5 / L6",
+    "valeur": 5.1923,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-3",
+      "CPT-5",
+      "CPT-6"
+    ]
+  },
+  {
+    "ligne": "L8",
+    "libelle": "Payback (mois)",
+    "formule": "CAC / marge unitaire",
+    "valeur": 4.8148,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-3",
+      "CPT-6"
+    ]
+  },
+  {
+    "ligne": "L9",
+    "libelle": "Charges fixes mensuelles",
+    "formule": "F",
+    "valeur": 900,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-8"
+    ]
+  },
+  {
+    "ligne": "L10",
+    "libelle": "Point mort (clients)",
+    "formule": "⌈F / marge unitaire⌉",
+    "valeur": 9,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-3",
+      "CPT-8"
+    ]
+  },
+  {
+    "ligne": "L11",
+    "libelle": "Clients pour se verser l'objectif R",
+    "formule": "⌈(F + R) / marge unitaire⌉",
+    "valeur": 32,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-3",
+      "CPT-8",
+      "CONFIG"
+    ]
+  },
+  {
+    "ligne": "L12",
+    "libelle": "Budget d'acquisition pour atteindre le point mort",
+    "formule": "L10 × CAC",
+    "valeur": 4680,
+    "statut": "calcule",
+    "depuis": [
+      "CPT-6",
+      "CPT-8"
+    ]
+  },
+  {
+    "ligne": "L13",
+    "libelle": "Part du SAM nécessaire",
+    "formule": "L10 / SAM",
+    "valeur": 0.0001875,
+    "statut": "calcule",
+    "depuis": [
+      "INV-2"
+    ]
+  },
+  {
+    "ligne": "L14",
+    "libelle": "Plafond de revenu annuel",
+    "formule": "SAM × P × 12",
+    "valeur": 85824000,
+    "statut": "calcule",
+    "depuis": [
+      "INV-2",
+      "CASE-prix"
+    ]
+  }
+]

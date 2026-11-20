@@ -1,0 +1,21 @@
+{
+  "statut": "ok",
+  "correspondances": [
+    {
+      "denomination": "BRIGADE DU GOURMET (FICTIVE)",
+      "siren": "999000001",
+      "activite_naf": "56.10A",
+      "commune": "Lyon",
+      "date_creation": "2010-03-01",
+      "etat": "cessee",
+      "source_url": "https://exemple.test/annuaire/999000001"
+    }
+  ],
+  "commune": {
+    "nom": "Lyon",
+    "code_commune": "69123",
+    "departement": "Rhône",
+    "population": 520000,
+    "source_url": "https://exemple.test/commune-lyon"
+  }
+}

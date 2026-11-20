@@ -1,0 +1,17 @@
+{
+  "agent": "comptable",
+  "vote": {
+    "note": 6,
+    "verdict": "GO",
+    "raison_principale": "Le prix corrigé garde une marge acceptable.",
+    "appuis": [
+      "CPT-3",
+      "JUG-C1"
+    ]
+  },
+  "a_change_d_avis": true,
+  "pourquoi": "Le prix d'entrée corrigé reste couvert par la marge unitaire.",
+  "cite": [
+    "changement:prix"
+  ]
+}

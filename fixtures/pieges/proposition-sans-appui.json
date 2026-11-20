@@ -1,0 +1,28 @@
+{
+  "piege": "proposition-sans-appui",
+  "garde_fou": "G11 (proposal-without-support)",
+  "schema": "DebateTurn",
+  "attendu_chemin": "proposition.appuis",
+  "donnee": {
+    "agent": "cliente",
+    "tour": 2,
+    "repliques": [
+      {
+        "type": "conteste",
+        "vise": "INV-A1",
+        "texte": "Un abonnement de plus, je n'en veux pas sans gain de couverts.",
+        "appuis": [
+          "CLI-2",
+          "CLI-1"
+        ]
+      }
+    ],
+    "proposition": {
+      "id": "CLI-P1",
+      "champ": "prix",
+      "texte": "Un prix d'entrée sous mon budget logiciel actuel.",
+      "appuis": []
+    },
+    "nouvelles_affirmations": []
+  }
+}

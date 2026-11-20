@@ -1,0 +1,17 @@
+{
+  "agent": "concurrent",
+  "vote": {
+    "note": 5,
+    "verdict": "PIVOT",
+    "raison_principale": "La cible resserrée donne un début de fossé.",
+    "appuis": [
+      "CON-4",
+      "JUG-C1"
+    ]
+  },
+  "a_change_d_avis": true,
+  "pourquoi": "Le prix corrigé me laisse moins de marge de manœuvre.",
+  "cite": [
+    "changement:prix"
+  ]
+}
