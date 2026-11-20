@@ -2,7 +2,9 @@
 // Aucun appel réseau par lui-même : tout passe par le client LLM (MOCK ou réel) et les sources du greffe injectés.
 
 import pLimit from "p-limit";
+import { SuiviBudget } from "../guardrails/budget";
 import { GUARDRAILS } from "../guardrails/config";
+import { masquerCles } from "../guardrails/redact";
 import type { LlmClient } from "../llm/types";
 import { SuiviUsage } from "../llm/usage";
 import type { SourcesRegistre } from "../registry";
@@ -68,6 +70,8 @@ export async function runTrial(texte: string, o: OptionsProces): Promise<Resulta
     sources: o.sources,
     store,
     suivi: new SuiviUsage(),
+    budget: new SuiviBudget(),
+    nomsProteges: [],
     repondre: o.repondre,
     limite: pLimit(GUARDRAILS.concurrency),
     emit: creerEmetteur(store, id, existants.length, o.now),
@@ -106,8 +110,8 @@ export async function runTrial(texte: string, o: OptionsProces): Promise<Resulta
     await store.sauvegarder(id, "TERMINE", etat);
     return fini(etat.resultat?.verdictJury === "AJOURNE" ? "ajourne" : "termine");
   } catch (e) {
-    if (e instanceof SaisieIncomplete) return { id, statut: "saisie_incomplete", message: e.message, evenements: await store.evenements(id) };
-    const message = (e as Error).message;
+    if (e instanceof SaisieIncomplete) return { id, statut: "saisie_incomplete", message: masquerCles(e.message), evenements: await store.evenements(id) };
+    const message = masquerCles((e as Error).message);
     const code = e instanceof ProcesError ? e.code : "echec";
     await ctx.emit({ type: "error", code, message, phase: etat.phase !== "DEBUT" && !estFinal(etat.phase) ? (etat.phase as PhaseProces) : null });
     return fini(code === "budget_depasse" ? "budget_depasse" : "echec", message);

@@ -1,12 +1,12 @@
 // P1a Identification (Greffier-enquêteur), P1b Questions (code), P1c Mise en état (Greffier-rédacteur).
+import { reverifierNeutralite } from "../../guardrails/neutrality";
 import { lirePrix } from "../../guardrails/numbers";
+import { donneesPersonnelles } from "../../guardrails/privacy";
 import { EnqueteGreffier, MiseEnEtat, type Reponses, type Saisie } from "../../schemas";
 import { questionsAPoser, interpreter } from "../questions";
 import { appeler, avecUneRelance, valider, ValidationError, type Contexte, type Etat } from "./contexte";
 
 const norm = (s: string) => s.toLowerCase().replace(/\s+/g, " ").trim();
-const EMAIL = /[\w.+-]+@[\w-]+\.[\w.-]+/;
-const TELEPHONE = /(?:\+33|0)\s?[1-9](?:[\s.-]?\d{2}){4}/;
 
 /** « La saisie confirmée n'ajoute rien » : chaque champ confirmé est un extrait de la saisie d'origine (G10). */
 export function saisieEstExtrait(confirmee: Saisie, texte: string): string | null {
@@ -15,14 +15,6 @@ export function saisieEstExtrait(confirmee: Saisie, texte: string): string | nul
     if (champ === "pays" || valeur === null) continue;
     if (!t.includes(norm(String(valeur)))) return `${champ} « ${valeur} » n'est pas un extrait de la saisie`;
   }
-  return null;
-}
-
-/** Aucune donnée personnelle dans une sortie du Greffier (G9) : e-mail, téléphone. */
-export function donneesPersonnelles(sortie: unknown): string | null {
-  const s = JSON.stringify(sortie);
-  if (EMAIL.test(s)) return "une adresse e-mail";
-  if (TELEPHONE.test(s)) return "un numéro de téléphone";
   return null;
 }
 
@@ -36,9 +28,9 @@ async function enqueter(ctx: Contexte, etat: Etat, retenue?: string): Promise<En
       pays: etat.saisie!.pays,
     });
     const e = valider(EnqueteGreffier, r.sortie, "Greffier-enquêteur");
-    const extrait = saisieEstExtrait(e.saisie_confirmee, etat.texte);
+    const extrait = saisieEstExtrait(e.saisie_confirmee, etat.texteNeutre ?? etat.texte);
     if (extrait) throw new ValidationError(`Greffier-enquêteur : ${extrait}`);
-    const pii = donneesPersonnelles(e);
+    const pii = donneesPersonnelles(e, ctx.nomsProteges);
     if (pii) throw new ValidationError(`Greffier-enquêteur : ${pii} dans la sortie (G9)`);
     const nettes = etat.pieces!.correspondances.length;
     if (nettes >= 2 && e.identification.statut === "entreprise_existante") {
@@ -52,6 +44,7 @@ async function enqueter(ctx: Contexte, etat: Etat, retenue?: string): Promise<En
 export async function identification(ctx: Contexte, etat: Etat): Promise<void> {
   etat.enquete = await enqueter(ctx, etat);
   etat.identification = etat.enquete.identification;
+  etat.alertes = [...(etat.alertes ?? []), ...etat.identification.alertes.map((a) => `identification : ${a}`)];
 }
 
 /** P1b : 0 à 2 questions à texte fixe. Sans réponse (ou « passer »), le procès continue. */
@@ -83,8 +76,6 @@ export async function questions(ctx: Contexte, etat: Etat): Promise<void> {
   }
 }
 
-const MOTS_INTERDITS = ["révolutionnaire", "unique", "meilleur", "disruptif", "énorme", "incroyable", "exceptionnel"];
-
 /** P1c : le dossier neutre et la Cliente. */
 export async function miseEnEtat(ctx: Contexte, etat: Etat): Promise<void> {
   const prixReponse = (etat.reponses ?? []).find((r) => r.code === "prix_absent" && r.reponse !== null);
@@ -97,14 +88,16 @@ export async function miseEnEtat(ctx: Contexte, etat: Etat): Promise<void> {
     });
     const m = valider(MiseEnEtat, r.sortie, "Greffier-rédacteur");
     const cf = m.case_file;
-    const texte = JSON.stringify([cf.cible, cf.probleme, cf.solution, cf.canal_presume, cf.differenciation]).toLowerCase();
-    const mot = MOTS_INTERDITS.find((x) => texte.includes(x));
-    if (mot) throw new ValidationError(`Greffier-rédacteur : mot publicitaire « ${mot} » dans le dossier neutre`);
+    const texte = JSON.stringify([cf.cible, cf.probleme, cf.solution, cf.canal_presume, cf.differenciation, cf.hypotheses_implicites]);
+    const mots = reverifierNeutralite(texte);
+    if (mots.length) throw new ValidationError(`Greffier-rédacteur : mot publicitaire « ${mots[0]} » dans le dossier neutre`);
     // Le prix : celui de la saisie, sinon de la réponse, sinon null ; rien d'inventé.
     const lu = lirePrix(etat.saisie!.prix ?? prixReponse?.reponse ?? "");
     if (lu && cf.prix.montant !== lu.montant) throw new ValidationError(`Greffier-rédacteur : prix ${cf.prix.montant} ≠ prix donné ${lu.montant}`);
     if (!lu && cf.prix.montant !== null && etat.identification!.offre_publique.prix_affiche === null) throw new ValidationError("Greffier-rédacteur : prix inventé (aucun prix donné ni affiché)");
     return m;
   });
+  // Les mots retirés avant l'appel sont listés par le code, pas par le LLM.
+  etat.miseEnEtat.case_file.mots_retires = (etat.motsRetires ?? []).slice(0, 20);
   etat.prenomCliente = etat.miseEnEtat.persona_cliente.prenom.trim();
 }

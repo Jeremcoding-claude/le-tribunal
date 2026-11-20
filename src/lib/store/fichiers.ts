@@ -1,6 +1,7 @@
 // Store fichiers : `.tribunal/<id>/etat.json` et `evenements.jsonl` (plugin Claude Code). Jamais de clé API dedans (G8).
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { masquerProfond } from "../guardrails/redact";
 import { TrialEvent } from "../schemas";
 import type { Store } from "./types";
 
@@ -15,14 +16,14 @@ export function creerStoreFichiers(racine = join(process.cwd(), ".tribunal")): S
   };
   return {
     async sauvegarder(id, phase, etat) {
-      writeFileSync(join(dossier(id), "etat.json"), JSON.stringify({ phase, etat }, null, 2));
+      writeFileSync(join(dossier(id), "etat.json"), JSON.stringify(masquerProfond({ phase, etat }), null, 2));
     },
     async dernierEtat(id) {
       const f = join(dossier(id), "etat.json");
       return existsSync(f) ? (JSON.parse(readFileSync(f, "utf8")) as { phase: string; etat: unknown }) : null;
     },
     async ajouterEvenement(id, e) {
-      appendFileSync(join(dossier(id), "evenements.jsonl"), JSON.stringify(e) + "\n");
+      appendFileSync(join(dossier(id), "evenements.jsonl"), JSON.stringify(masquerProfond(e)) + "\n");
     },
     async evenements(id) {
       const f = join(dossier(id), "evenements.jsonl");

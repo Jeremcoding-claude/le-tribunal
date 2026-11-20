@@ -1,6 +1,7 @@
 // P2 Instruction ×5 en parallèle : chaque juré cherche, le code vérifie chaque chiffre, puis le vote 1 est SCELLÉ.
 // Le Comptable fait deux appels : hypothèses (parallèle) → ledger.ts calcule → lecture du tableau + vote.
 
+import { detecterArgumentsRecopies } from "../../guardrails/consensus";
 import { GUARDRAILS } from "../../guardrails/config";
 import {
   AGENTS_JURES,
@@ -153,6 +154,15 @@ export async function instruction(ctx: Contexte, etat: Etat): Promise<void> {
 
   etat.dossiers = dossiers;
   etat.absents = absents;
+  etat.alertes ??= [];
+  for (const a of AGENTS_JURES) for (const x of dossiers[a]?.brief.alertes ?? []) etat.alertes.push(`${a} : ${x}`);
+  const copies = detecterArgumentsRecopies(
+    AGENTS_JURES.flatMap((a) => (dossiers[a]?.brief.arguments ?? []).map((g) => ({ agent: a, id: g.id, these: g.these }))),
+  );
+  for (const c of copies) {
+    etat.alertes.push(`argument recopié : ${c.a} ≈ ${c.b} (${c.similarite})`);
+    await ctx.emit({ type: "error", code: "argument_recopie", message: `${c.a} et ${c.b} se ressemblent (${c.similarite})`, phase: "P2" });
+  }
   etat.votes1 = {};
   for (const a of AGENTS_JURES) {
     const d = dossiers[a];

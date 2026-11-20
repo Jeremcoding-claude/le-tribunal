@@ -4,7 +4,10 @@
 import pLimit from "p-limit";
 import type { ZodType } from "zod";
 import type { AgentId, Phase } from "../../../../prompts/agents.config";
+import { SuiviBudget } from "../../guardrails/budget";
 import { GUARDRAILS } from "../../guardrails/config";
+import { donneesPersonnelles } from "../../guardrails/privacy";
+import { masquerProfond } from "../../guardrails/redact";
 import type { LlmClient, LlmEvent } from "../../llm/types";
 import { LlmError } from "../../llm/types";
 import { SuiviUsage } from "../../llm/usage";
@@ -55,6 +58,12 @@ export interface Etat {
   votes2?: Partial<Record<AgentJure, Revote>>;
   resultat?: ResultatTally & { texte: string };
   coutUsd?: number;
+  /** Alertes pour le rapport : instructions cachées, arguments recopiés, budget. */
+  alertes?: string[];
+  /** Mots publicitaires retirés de la saisie avant les appels (G3). */
+  motsRetires?: string[];
+  /** La saisie après neutralisation (injection et superlatifs retirés) : la référence du « extrait de la saisie ». */
+  texteNeutre?: string;
 }
 
 type Retire<T> = T extends unknown ? Omit<T, "trial_id" | "seq" | "ts"> : never;
@@ -66,6 +75,9 @@ export interface Contexte {
   sources: SourcesRegistre;
   store: Store;
   suivi: SuiviUsage;
+  budget: SuiviBudget;
+  /** « Prénom Nom » des dirigeants vus dans le registre : ils ne doivent apparaître dans aucune sortie (jamais stockés). */
+  nomsProteges: string[];
   repondre?: Repondre;
   limite: ReturnType<typeof pLimit>;
   emit(e: EvenementPartiel): Promise<void>;
@@ -74,7 +86,7 @@ export interface Contexte {
 export function creerEmetteur(store: Store, id: string, deja: number, now: () => string = () => new Date().toISOString()) {
   let seq = deja;
   return async (e: EvenementPartiel) => {
-    const complet = TrialEventSchema.parse({ ...e, trial_id: id, seq: seq++, ts: now() });
+    const complet = TrialEventSchema.parse(masquerProfond({ ...e, trial_id: id, seq: seq++, ts: now() }));
     await store.ajouterEvenement(id, complet);
   };
 }
@@ -98,7 +110,11 @@ export async function appeler(ctx: Contexte, p: { agent: AgentId; phase: Phase; 
   ctx.suivi.ajouter(p.agent, p.phase, r.modele, r.usage);
   const total = ctx.suivi.total();
   await ctx.emit({ type: "cost_update", usd: total.coutUsd, tokens_entree: total.usage.entree, tokens_sortie: total.usage.sortie, recherches: total.usage.recherches });
-  if (total.coutUsd > GUARDRAILS.budget.maxUsdPerTrial) throw new ProcesError(`Plafond de coût dépassé (${total.coutUsd} $ > ${GUARDRAILS.budget.maxUsdPerTrial} $).`, "budget_depasse");
+  const b = ctx.budget.verifier(total.coutUsd);
+  if (b.nouvelleAlerte) await ctx.emit({ type: "error", code: "budget_alerte", message: `Coût estimé ${total.coutUsd} $ : au-delà de ${GUARDRAILS.budget.warnUsdPerTrial} $.`, phase: null });
+  if (b.etat === "depasse") throw new ProcesError(`Plafond de coût dépassé (${total.coutUsd} $ > ${GUARDRAILS.budget.maxUsdPerTrial} $).`, "budget_depasse");
+  const pii = donneesPersonnelles(r.sortie, ctx.nomsProteges);
+  if (pii) throw new ValidationError(`${p.agent} : ${pii} dans la sortie (G9)`);
   return r;
 }
 

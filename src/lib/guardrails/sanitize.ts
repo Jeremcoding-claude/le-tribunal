@@ -53,3 +53,18 @@ export function entourerDonneesWeb(texte: string, source?: string): string {
   const neutre = texte.replace(/<\/?donnees_web>/gi, "");
   return `<donnees_web${source ? ` source="${source.replace(/"/g, "")}"` : ""}>\n${neutre}\n</donnees_web>`;
 }
+
+/**
+ * Neutralise une instruction cachée dans une SAISIE (injection-input, P0) : le fragment suspect et la fin de son élément
+ * (jusqu'à la virgule) sont retirés, et une alerte est notée. Le reste de la saisie est intact.
+ */
+export function retirerInstructions(texte: string): ContenuNettoye {
+  const alertes = detecterInstructions(texte);
+  if (alertes.length === 0) return { texte, alertes };
+  let net = texte;
+  for (const { motif } of MOTIFS) {
+    const g = new RegExp(motif.source + "[^,;.\n]*", motif.flags.includes("g") ? motif.flags : motif.flags + "g");
+    net = net.replace(g, " ");
+  }
+  return { texte: net.replace(/[ \t]{2,}/g, " ").replace(/\s+,/g, ",").trim(), alertes };
+}

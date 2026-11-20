@@ -1,3 +1,4 @@
+import { masquerProfond } from "../guardrails/redact";
 import type { TrialEvent } from "../schemas";
 import type { Store } from "./types";
 
@@ -6,7 +7,7 @@ export function creerStoreMemoire(): Store {
   const events = new Map<string, TrialEvent[]>();
   return {
     async sauvegarder(id, phase, etat) {
-      etats.set(id, { phase, etat: structuredClone(etat) });
+      etats.set(id, { phase, etat: masquerProfond(structuredClone(etat)) });
     },
     async dernierEtat(id) {
       const e = etats.get(id);

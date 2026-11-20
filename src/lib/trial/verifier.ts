@@ -238,6 +238,7 @@ export function verifierChangementsRuling(r: Ruling, v1: CaseFile, propositionsC
   const annonces = new Set(r.plan_corrige.changements.map((c) => CHAMP_DU_CASEFILE[c.champ]));
   const v2 = r.plan_corrige.case_file_v2 as Record<string, unknown>;
   for (const [cle, avant] of Object.entries(v1)) {
+    if (cle === "mots_retires") continue; // liste tenue par le code (neutralité), pas par le Juge
     if (JSON.stringify(avant) !== JSON.stringify(v2[cle]) && !annonces.has(cle as never)) {
       rejets.push({ id: `case_file_v2.${cle}`, raison: "champ modifié sans être annoncé dans les changements" });
     }
