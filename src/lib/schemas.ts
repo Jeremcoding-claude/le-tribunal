@@ -291,6 +291,14 @@ export const ComptableHypotheses = z.object({
   lacunes: communs.lacunes,
   alertes: communs.alertes,
 });
+/** Comptable, mission 1 en mode plugin : mêmes champs, mais l'agent écrit lui-même `source_url` + `extrait`. */
+export const ComptableInstruction = z.object({
+  agent: z.literal("comptable"),
+  affirmations: affs,
+  hypotheses: ComptableHypothesesChamps,
+  lacunes: communs.lacunes,
+  alertes: communs.alertes,
+});
 /** Comptable, appel 2 (sans outil) : lecture du tableau calculé + vote. */
 export const ComptableLecture = z.object({
   agent: z.literal("comptable"),

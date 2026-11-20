@@ -1,16 +1,10 @@
 // Règles sur le prénom et le texte de la persona de la Cliente (plan v3.0, §3.0 et §3.3.4, garde-fou G12).
-// Fonctions pures, sans dépendance : le code, pas le LLM, décide si une persona est valide.
-//
-// // HYPOTHÈSE: les cinq prénoms fixes sont définis ici jusqu'à l'étape 3. La SOURCE UNIQUE devient alors
-// prompts/agents.config.ts, que ce fichier importera à la place de PRENOMS_AGENTS.
+// Fonctions pures : le code, pas le LLM, décide si une persona est valide.
+// Les cinq prénoms fixes viennent de prompts/salle.ts, relu par prompts/agents.config.ts (source unique).
 
-export const PRENOMS_AGENTS = {
-  JUG: "Nadia",
-  INV: "Victor",
-  CPT: "Léa",
-  JUR: "Claire",
-  CON: "Marco",
-} as const;
+import { PRENOMS_AGENTS } from "../../../prompts/salle";
+
+export { PRENOMS_AGENTS };
 
 /** Minuscules, sans accents, sans espaces autour : « Léa » et « lea » sont le même prénom. */
 export function normaliser(texte: string): string {

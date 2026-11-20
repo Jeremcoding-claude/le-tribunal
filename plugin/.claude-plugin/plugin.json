@@ -1,0 +1,7 @@
+{
+  "name": "tribunal",
+  "version": "0.1.0",
+  "description": "Le Tribunal : 5 jurés IA jugent ton business avec des chiffres sourcés, débattent, revotent et rendent un rapport PDF.",
+  "author": { "name": "Le Tribunal contributors" },
+  "license": "MIT"
+}
