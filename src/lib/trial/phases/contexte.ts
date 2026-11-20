@@ -10,7 +10,7 @@ import { donneesPersonnelles } from "../../guardrails/privacy";
 import { masquerProfond } from "../../guardrails/redact";
 import type { LlmClient, LlmEvent } from "../../llm/types";
 import { LlmError } from "../../llm/types";
-import { SuiviUsage } from "../../llm/usage";
+import { SuiviUsage, type Usage } from "../../llm/usage";
 import { construireMission } from "../../prompts/loader";
 import type { SourcesRegistre } from "../../registry";
 import type { DebateTurn, EnqueteGreffier, Identification, JurorBrief, LedgerLine, MiseEnEtat, PiecesDuGreffe, Reponses, Revote, Ruling, Saisie, TrialEvent, Vote, AgentJure } from "../../schemas";
@@ -58,6 +58,9 @@ export interface Etat {
   votes2?: Partial<Record<AgentJure, Revote>>;
   resultat?: ResultatTally & { texte: string };
   coutUsd?: number;
+  /** Tokens et recherches du procès, et coût par phase (annexe B du rapport). */
+  usage?: Usage;
+  coutParPhase?: Record<string, number>;
   /** Alertes pour le rapport : instructions cachées, arguments recopiés, budget. */
   alertes?: string[];
   /** Mots publicitaires retirés de la saisie avant les appels (G3). */

@@ -103,6 +103,8 @@ export async function runTrial(texte: string, o: OptionsProces): Promise<Resulta
       }
       etat.phase = phase;
       etat.coutUsd = ctx.suivi.total().coutUsd;
+      etat.usage = ctx.suivi.total().usage;
+      etat.coutParPhase = ctx.suivi.parPhase();
       await store.sauvegarder(id, phase, etat);
       if (o.arretApres === phase) return fini("interrompu");
     }
