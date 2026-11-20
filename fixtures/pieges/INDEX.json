@@ -213,8 +213,8 @@
     "test": "homonyms",
     "garde_fou": "G10",
     "fixture": null,
-    "etape_ecriture": 4,
-    "note": ""
+    "etape_ecriture": 6,
+    "note": "Le statut est décidé par le Greffier : contrôle code (plusieurs correspondances => homonymes) en phase mise en état"
   },
   {
     "test": "intake-price-element",

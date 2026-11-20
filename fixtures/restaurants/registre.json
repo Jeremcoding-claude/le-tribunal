@@ -1,32 +1,44 @@
 {
-  "recherche": {
-    "resultats": [
+  "registre": {
+    "results": [
       {
-        "nom_complet": "BRIGADE DU GOURMET (FICTIVE)",
         "siren": "999000001",
+        "nom_complet": "BRIGADE DU GOURMET (FICTIVE)",
         "activite_principale": "56.10A",
-        "siege": {
-          "commune": "Lyon",
-          "code_postal": "69001"
-        },
         "date_creation": "2010-03-01",
         "etat_administratif": "C",
+        "nature_juridique": "5710",
+        "siege": {
+          "libelle_commune": "LYON",
+          "code_postal": "69001",
+          "departement": "69",
+          "adresse": "1 RUE EXEMPLE 69001 LYON"
+        },
         "dirigeants": [
           {
             "nom": "EXEMPLE",
-            "prenoms": "Jean",
-            "qualite": "Gérant"
+            "prenoms": "JEAN",
+            "qualite": "Gérant",
+            "annee_de_naissance": "1975",
+            "type_dirigeant": "personne physique"
           }
-        ],
-        "url": "https://exemple.test/annuaire/999000001"
+        ]
       }
     ]
   },
-  "commune": {
-    "nom": "Lyon",
-    "code": "69123",
-    "codeDepartement": "69",
-    "population": 520000,
-    "url": "https://exemple.test/commune-lyon"
-  }
+  "commune": [
+    {
+      "nom": "Lyon",
+      "code": "69123",
+      "codeDepartement": "69",
+      "population": 520000,
+      "codesPostaux": [
+        "69001"
+      ],
+      "departement": {
+        "code": "69",
+        "nom": "Rhône"
+      }
+    }
+  ]
 }

@@ -599,7 +599,7 @@ export const Ruling = z
       .array(
         z.object({
           id: z.string().regex(/^JUG-C\d{1,2}$/, "Identifiant attendu : JUG-C1"),
-          entre: z.tuple([AgentJure, AgentJure]),
+          entre: z.array(AgentJure).length(2).describe("Les deux jurés en désaccord"),
           sujet: z.string().max(200),
           position_retenue: AgentJure,
           attendu: z.string().max(400).describe("« Attendu que… », sans chiffre nouveau"),

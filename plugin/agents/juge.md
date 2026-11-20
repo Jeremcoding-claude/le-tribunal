@@ -55,34 +55,21 @@ Un seul objet JSON.
             "pattern": "^JUG-C\\d{1,2}$"
           },
           "entre": {
-            "type": "array",
-            "items": [
-              {
-                "type": "string",
-                "enum": [
-                  "investisseur",
-                  "comptable",
-                  "juriste",
-                  "concurrent",
-                  "cliente"
-                ],
-                "description": "Un des 5 jurés"
-              },
-              {
-                "type": "string",
-                "enum": [
-                  "investisseur",
-                  "comptable",
-                  "juriste",
-                  "concurrent",
-                  "cliente"
-                ],
-                "description": "Un des 5 jurés"
-              }
-            ],
-            "additionalItems": false,
             "minItems": 2,
-            "maxItems": 2
+            "maxItems": 2,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "investisseur",
+                "comptable",
+                "juriste",
+                "concurrent",
+                "cliente"
+              ],
+              "description": "Un des 5 jurés"
+            },
+            "description": "Les deux jurés en désaccord"
           },
           "sujet": {
             "type": "string",

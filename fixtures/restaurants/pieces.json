@@ -8,7 +8,7 @@
       "commune": "Lyon",
       "date_creation": "2010-03-01",
       "etat": "cessee",
-      "source_url": "https://exemple.test/annuaire/999000001"
+      "source_url": "https://annuaire-entreprises.data.gouv.fr/entreprise/999000001"
     }
   ],
   "commune": {
@@ -16,6 +16,6 @@
     "code_commune": "69123",
     "departement": "Rhône",
     "population": 520000,
-    "source_url": "https://exemple.test/commune-lyon"
+    "source_url": "https://geo.api.gouv.fr/communes/69123"
   }
 }
