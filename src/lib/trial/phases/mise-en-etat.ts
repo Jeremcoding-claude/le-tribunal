@@ -45,6 +45,8 @@ export async function identification(ctx: Contexte, etat: Etat): Promise<void> {
   etat.enquete = await enqueter(ctx, etat);
   etat.identification = etat.enquete.identification;
   etat.alertes = [...(etat.alertes ?? []), ...etat.identification.alertes.map((a) => `identification : ${a}`)];
+  const id = etat.identification;
+  await ctx.emit({ type: "identification", statut: id.statut, activite: id.categorie_activite.libelle, commune: id.zone.commune, correspondances: etat.pieces?.correspondances.length ?? 0, ecarts: id.ecarts });
 }
 
 /** P1b : 0 à 2 questions à texte fixe. Sans réponse (ou « passer »), le procès continue. */
@@ -100,4 +102,5 @@ export async function miseEnEtat(ctx: Contexte, etat: Etat): Promise<void> {
   // Les mots retirés avant l'appel sont listés par le code, pas par le LLM.
   etat.miseEnEtat.case_file.mots_retires = (etat.motsRetires ?? []).slice(0, 20);
   etat.prenomCliente = etat.miseEnEtat.persona_cliente.prenom.trim();
+  await ctx.emit({ type: "cliente_creee", prenom: etat.prenomCliente, role: etat.miseEnEtat.persona_cliente.role, ville: etat.miseEnEtat.persona_cliente.ville });
 }

@@ -1,7 +1,10 @@
 // Les routes /api sous forme de fonctions Request → Response (aucun import de Next.js) : les fichiers src/app/api/**/route.ts
 // ne font que les appeler. Tout ce qui sort passe par masquerProfond / masquerCles (G8).
 
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ZodError } from "zod";
+import { GUARDRAILS } from "../guardrails/config";
 import { masquerCles, masquerProfond } from "../guardrails/redact";
 import type { TrialEvent } from "../schemas";
 import type { Service } from "./service";
@@ -28,6 +31,33 @@ export async function postTrial(req: Request, s: Service): Promise<Response> {
   } catch (e) {
     if (e instanceof ZodError) return erreur(400, e.issues[0]?.message ?? "Requête invalide.");
     return erreur(500, (e as Error).message);
+  }
+}
+
+/** GET /api/trials : « Mes audiences ». */
+export function getTrials(s: Service): Response {
+  return json({ audiences: s.lister() });
+}
+
+/** DELETE /api/trials/:id : supprime un procès terminé (jamais un procès en cours). */
+export function deleteTrial(id: string, s: Service): Response {
+  const r = s.supprimer(id);
+  if (r === "inconnu") return erreur(404, "Procès inconnu.");
+  if (r === "en_cours") return erreur(409, "Le procès est en cours : impossible de le supprimer.");
+  return new Response(null, { status: 204 });
+}
+
+/** GET /api/mode : « demo » (aucun appel payant) ou « reel ». Jamais la clé, son début, ni un jeton. */
+export function getMode(): Response {
+  return json({ mode: GUARDRAILS.mock ? "demo" : "reel" });
+}
+
+/** GET /api/demo : les événements enregistrés du cas de référence. Zéro appel payant, même en mode réel. */
+export function getDemo(racine = process.cwd()): Response {
+  try {
+    return json({ evenements: JSON.parse(readFileSync(join(racine, "fixtures", "restaurants", "events.json"), "utf8")) });
+  } catch {
+    return erreur(404, "La démo n'est pas disponible sur ce serveur.");
   }
 }
 

@@ -3,7 +3,7 @@
 // Usage : node scripts/run-etapes.mjs 1 2 3 [--dry] [--turns 80] [--budget 8]
 // Les noms d'options de `claude` sont à valider avec `claude --help` (voir docs/PROCESSUS.md).
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const argv = process.argv.slice(2);

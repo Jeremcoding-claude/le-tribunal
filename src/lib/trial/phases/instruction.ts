@@ -37,7 +37,7 @@ async function signaler(ctx: Contexte, agent: AgentJure, brief: DossierVerifiabl
   for (const a of brief.affirmations.filter((x) => x.type === "fait")) {
     const rejet = v.rejetees.find((r) => r.id === a.id);
     if (rejet) await ctx.emit({ type: "source_rejected", agent, id: a.id, raison: rejet.raison });
-    else await ctx.emit({ type: "source_verified", agent, id: a.id, domaine: new URL(a.source_url!).hostname });
+    else await ctx.emit({ type: "source_verified", agent, id: a.id, domaine: new URL(a.source_url!).hostname, url: a.source_url! });
   }
 }
 

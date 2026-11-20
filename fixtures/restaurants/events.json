@@ -1,0 +1,1755 @@
+[
+ {
+  "trial_id": "demo",
+  "seq": 0,
+  "ts": "2026-11-20T10:00:00.000Z",
+  "type": "phase_started",
+  "phase": "P0"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 1,
+  "ts": "2026-11-20T10:00:01.000Z",
+  "type": "phase_started",
+  "phase": "P1a"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 2,
+  "ts": "2026-11-20T10:00:02.000Z",
+  "type": "agent_status",
+  "agent": "greffier",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 3,
+  "ts": "2026-11-20T10:00:03.000Z",
+  "type": "search_performed",
+  "agent": "greffier",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 4,
+  "ts": "2026-11-20T10:00:04.000Z",
+  "type": "agent_status",
+  "agent": "greffier",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 5,
+  "ts": "2026-11-20T10:00:05.000Z",
+  "type": "agent_status",
+  "agent": "greffier",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 6,
+  "ts": "2026-11-20T10:00:06.000Z",
+  "type": "cost_update",
+  "usd": 0.013942,
+  "tokens_entree": 741,
+  "tokens_sortie": 246,
+  "recherches": 1
+ },
+ {
+  "trial_id": "demo",
+  "seq": 7,
+  "ts": "2026-11-20T10:00:07.000Z",
+  "type": "identification",
+  "statut": "aucune_trace",
+  "activite": "Programmation informatique",
+  "commune": "Lyon",
+  "correspondances": 1,
+  "ecarts": [
+   "Le registre renvoie « BRIGADE DU GOURMET (FICTIVE) » (restauration, cessée) : nom différent et activité sans rapport ; non retenue."
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 8,
+  "ts": "2026-11-20T10:00:08.000Z",
+  "type": "phase_started",
+  "phase": "P1b"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 9,
+  "ts": "2026-11-20T10:00:09.000Z",
+  "type": "phase_started",
+  "phase": "P1c"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 10,
+  "ts": "2026-11-20T10:00:10.000Z",
+  "type": "agent_status",
+  "agent": "greffier",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 11,
+  "ts": "2026-11-20T10:00:11.000Z",
+  "type": "cost_update",
+  "usd": 0.019362,
+  "tokens_entree": 1641,
+  "tokens_sortie": 608,
+  "recherches": 1
+ },
+ {
+  "trial_id": "demo",
+  "seq": 12,
+  "ts": "2026-11-20T10:00:12.000Z",
+  "type": "cliente_creee",
+  "prenom": "Sandrine",
+  "role": "Gérante et propriétaire",
+  "ville": "Lyon"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 13,
+  "ts": "2026-11-20T10:00:13.000Z",
+  "type": "phase_started",
+  "phase": "P2"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 14,
+  "ts": "2026-11-20T10:00:14.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 15,
+  "ts": "2026-11-20T10:00:15.000Z",
+  "type": "search_performed",
+  "agent": "comptable",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 16,
+  "ts": "2026-11-20T10:00:16.000Z",
+  "type": "search_performed",
+  "agent": "comptable",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 17,
+  "ts": "2026-11-20T10:00:17.000Z",
+  "type": "search_performed",
+  "agent": "comptable",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 18,
+  "ts": "2026-11-20T10:00:18.000Z",
+  "type": "search_performed",
+  "agent": "comptable",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 19,
+  "ts": "2026-11-20T10:00:19.000Z",
+  "type": "search_performed",
+  "agent": "comptable",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 20,
+  "ts": "2026-11-20T10:00:20.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 21,
+  "ts": "2026-11-20T10:00:21.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 22,
+  "ts": "2026-11-20T10:00:22.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 23,
+  "ts": "2026-11-20T10:00:23.000Z",
+  "type": "search_performed",
+  "agent": "investisseur",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 24,
+  "ts": "2026-11-20T10:00:24.000Z",
+  "type": "search_performed",
+  "agent": "investisseur",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 25,
+  "ts": "2026-11-20T10:00:25.000Z",
+  "type": "search_performed",
+  "agent": "investisseur",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 26,
+  "ts": "2026-11-20T10:00:26.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 27,
+  "ts": "2026-11-20T10:00:27.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 28,
+  "ts": "2026-11-20T10:00:28.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 29,
+  "ts": "2026-11-20T10:00:29.000Z",
+  "type": "search_performed",
+  "agent": "juriste",
+  "requete": "mock : www.legifrance.gouv.fr",
+  "domaines": [
+   "www.legifrance.gouv.fr"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 30,
+  "ts": "2026-11-20T10:00:30.000Z",
+  "type": "search_performed",
+  "agent": "juriste",
+  "requete": "mock : www.legifrance.gouv.fr",
+  "domaines": [
+   "www.legifrance.gouv.fr"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 31,
+  "ts": "2026-11-20T10:00:31.000Z",
+  "type": "search_performed",
+  "agent": "juriste",
+  "requete": "mock : www.legifrance.gouv.fr",
+  "domaines": [
+   "www.legifrance.gouv.fr"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 32,
+  "ts": "2026-11-20T10:00:32.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 33,
+  "ts": "2026-11-20T10:00:33.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 34,
+  "ts": "2026-11-20T10:00:34.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 35,
+  "ts": "2026-11-20T10:00:35.000Z",
+  "type": "search_performed",
+  "agent": "concurrent",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 36,
+  "ts": "2026-11-20T10:00:36.000Z",
+  "type": "search_performed",
+  "agent": "concurrent",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 37,
+  "ts": "2026-11-20T10:00:37.000Z",
+  "type": "search_performed",
+  "agent": "concurrent",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 38,
+  "ts": "2026-11-20T10:00:38.000Z",
+  "type": "search_performed",
+  "agent": "concurrent",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 39,
+  "ts": "2026-11-20T10:00:39.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 40,
+  "ts": "2026-11-20T10:00:40.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 41,
+  "ts": "2026-11-20T10:00:41.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 42,
+  "ts": "2026-11-20T10:00:42.000Z",
+  "type": "search_performed",
+  "agent": "cliente",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 43,
+  "ts": "2026-11-20T10:00:43.000Z",
+  "type": "search_performed",
+  "agent": "cliente",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 44,
+  "ts": "2026-11-20T10:00:44.000Z",
+  "type": "search_performed",
+  "agent": "cliente",
+  "requete": "mock : exemple.test",
+  "domaines": [
+   "exemple.test"
+  ]
+ },
+ {
+  "trial_id": "demo",
+  "seq": 45,
+  "ts": "2026-11-20T10:00:45.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 46,
+  "ts": "2026-11-20T10:00:46.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 47,
+  "ts": "2026-11-20T10:00:47.000Z",
+  "type": "cost_update",
+  "usd": 0.078554,
+  "tokens_entree": 3507,
+  "tokens_sortie": 1154,
+  "recherches": 6
+ },
+ {
+  "trial_id": "demo",
+  "seq": 48,
+  "ts": "2026-11-20T10:00:48.000Z",
+  "type": "cost_update",
+  "usd": 0.117672,
+  "tokens_entree": 5236,
+  "tokens_sortie": 1720,
+  "recherches": 9
+ },
+ {
+  "trial_id": "demo",
+  "seq": 49,
+  "ts": "2026-11-20T10:00:49.000Z",
+  "type": "cost_update",
+  "usd": 0.156306,
+  "tokens_entree": 7043,
+  "tokens_sortie": 2222,
+  "recherches": 12
+ },
+ {
+  "trial_id": "demo",
+  "seq": 50,
+  "ts": "2026-11-20T10:00:50.000Z",
+  "type": "cost_update",
+  "usd": 0.206272,
+  "tokens_entree": 8786,
+  "tokens_sortie": 2870,
+  "recherches": 16
+ },
+ {
+  "trial_id": "demo",
+  "seq": 51,
+  "ts": "2026-11-20T10:00:51.000Z",
+  "type": "cost_update",
+  "usd": 0.245098,
+  "tokens_entree": 10754,
+  "tokens_sortie": 3359,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 52,
+  "ts": "2026-11-20T10:00:52.000Z",
+  "type": "source_verified",
+  "agent": "investisseur",
+  "id": "INV-1",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/insee-restauration"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 53,
+  "ts": "2026-11-20T10:00:53.000Z",
+  "type": "source_verified",
+  "agent": "juriste",
+  "id": "JUR-1",
+  "domaine": "www.legifrance.gouv.fr",
+  "url": "https://www.legifrance.gouv.fr/mock/rgpd-art-83"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 54,
+  "ts": "2026-11-20T10:00:54.000Z",
+  "type": "source_verified",
+  "agent": "cliente",
+  "id": "CLI-1",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/observatoire-restauration"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 55,
+  "ts": "2026-11-20T10:00:55.000Z",
+  "type": "source_verified",
+  "agent": "comptable",
+  "id": "CPT-1",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/tarifs-paiement"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 56,
+  "ts": "2026-11-20T10:00:56.000Z",
+  "type": "source_verified",
+  "agent": "investisseur",
+  "id": "INV-3",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/etude-equipement-caisse"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 57,
+  "ts": "2026-11-20T10:00:57.000Z",
+  "type": "source_verified",
+  "agent": "juriste",
+  "id": "JUR-2",
+  "domaine": "www.legifrance.gouv.fr",
+  "url": "https://www.legifrance.gouv.fr/mock/rgpd-art-28"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 58,
+  "ts": "2026-11-20T10:00:58.000Z",
+  "type": "source_verified",
+  "agent": "concurrent",
+  "id": "CON-1",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/alpha/tarifs"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 59,
+  "ts": "2026-11-20T10:00:59.000Z",
+  "type": "source_verified",
+  "agent": "cliente",
+  "id": "CLI-2",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/enquete-budget-logiciel"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 60,
+  "ts": "2026-11-20T10:01:00.000Z",
+  "type": "source_verified",
+  "agent": "comptable",
+  "id": "CPT-2",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/grille-tarifaire-modele"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 61,
+  "ts": "2026-11-20T10:01:01.000Z",
+  "type": "source_verified",
+  "agent": "investisseur",
+  "id": "INV-4",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/barometre-outils-restauration"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 62,
+  "ts": "2026-11-20T10:01:02.000Z",
+  "type": "source_verified",
+  "agent": "juriste",
+  "id": "JUR-3",
+  "domaine": "www.legifrance.gouv.fr",
+  "url": "https://www.legifrance.gouv.fr/mock/rgpd-art-30"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 63,
+  "ts": "2026-11-20T10:01:03.000Z",
+  "type": "source_verified",
+  "agent": "concurrent",
+  "id": "CON-2",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/beta/tarifs"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 64,
+  "ts": "2026-11-20T10:01:04.000Z",
+  "type": "source_verified",
+  "agent": "cliente",
+  "id": "CLI-3",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/enquete-gerants"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 65,
+  "ts": "2026-11-20T10:01:05.000Z",
+  "type": "source_verified",
+  "agent": "comptable",
+  "id": "CPT-5",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/etude-churn-tpe"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 66,
+  "ts": "2026-11-20T10:01:06.000Z",
+  "type": "source_verified",
+  "agent": "concurrent",
+  "id": "CON-3",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/outil-sans-code"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 67,
+  "ts": "2026-11-20T10:01:07.000Z",
+  "type": "source_verified",
+  "agent": "comptable",
+  "id": "CPT-6",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/etude-cac-tpe"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 68,
+  "ts": "2026-11-20T10:01:08.000Z",
+  "type": "source_verified",
+  "agent": "concurrent",
+  "id": "CON-4",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/outil-sans-code"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 69,
+  "ts": "2026-11-20T10:01:09.000Z",
+  "type": "source_verified",
+  "agent": "comptable",
+  "id": "CPT-8",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/guide-charges-editeur-solo"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 70,
+  "ts": "2026-11-20T10:01:10.000Z",
+  "type": "source_verified",
+  "agent": "concurrent",
+  "id": "CON-5",
+  "domaine": "exemple.test",
+  "url": "https://exemple.test/annonce-levee-alpha"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 71,
+  "ts": "2026-11-20T10:01:11.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 72,
+  "ts": "2026-11-20T10:01:12.000Z",
+  "type": "cost_update",
+  "usd": 0.2532,
+  "tokens_entree": 13815,
+  "tokens_sortie": 3557,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 73,
+  "ts": "2026-11-20T10:01:13.000Z",
+  "type": "vote_sealed",
+  "agent": "investisseur"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 74,
+  "ts": "2026-11-20T10:01:14.000Z",
+  "type": "vote_sealed",
+  "agent": "comptable"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 75,
+  "ts": "2026-11-20T10:01:15.000Z",
+  "type": "vote_sealed",
+  "agent": "juriste"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 76,
+  "ts": "2026-11-20T10:01:16.000Z",
+  "type": "vote_sealed",
+  "agent": "concurrent"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 77,
+  "ts": "2026-11-20T10:01:17.000Z",
+  "type": "vote_sealed",
+  "agent": "cliente"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 78,
+  "ts": "2026-11-20T10:01:18.000Z",
+  "type": "phase_started",
+  "phase": "P3"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 79,
+  "ts": "2026-11-20T10:01:19.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 80,
+  "ts": "2026-11-20T10:01:20.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 81,
+  "ts": "2026-11-20T10:01:21.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 82,
+  "ts": "2026-11-20T10:01:22.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 83,
+  "ts": "2026-11-20T10:01:23.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 84,
+  "ts": "2026-11-20T10:01:24.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 85,
+  "ts": "2026-11-20T10:01:25.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 86,
+  "ts": "2026-11-20T10:01:26.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 87,
+  "ts": "2026-11-20T10:01:27.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 88,
+  "ts": "2026-11-20T10:01:28.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 89,
+  "ts": "2026-11-20T10:01:29.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 90,
+  "ts": "2026-11-20T10:01:30.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 91,
+  "ts": "2026-11-20T10:01:31.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 92,
+  "ts": "2026-11-20T10:01:32.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 93,
+  "ts": "2026-11-20T10:01:33.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 94,
+  "ts": "2026-11-20T10:01:34.000Z",
+  "type": "cost_update",
+  "usd": 0.260844,
+  "tokens_entree": 17307,
+  "tokens_sortie": 3623,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 95,
+  "ts": "2026-11-20T10:01:35.000Z",
+  "type": "cost_update",
+  "usd": 0.268584,
+  "tokens_entree": 20857,
+  "tokens_sortie": 3687,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 96,
+  "ts": "2026-11-20T10:01:36.000Z",
+  "type": "cost_update",
+  "usd": 0.276594,
+  "tokens_entree": 24522,
+  "tokens_sortie": 3755,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 97,
+  "ts": "2026-11-20T10:01:37.000Z",
+  "type": "cost_update",
+  "usd": 0.284262,
+  "tokens_entree": 28036,
+  "tokens_sortie": 3819,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 98,
+  "ts": "2026-11-20T10:01:38.000Z",
+  "type": "cost_update",
+  "usd": 0.292154,
+  "tokens_entree": 31692,
+  "tokens_sortie": 3877,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 99,
+  "ts": "2026-11-20T10:01:39.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "investisseur",
+   "tour": 1,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "CLI-A1",
+     "texte": "Votre marge est faible ; le marché, lui, est vaste et croît.",
+     "appuis": [
+      "INV-1",
+      "INV-4"
+     ]
+    }
+   ],
+   "proposition": null,
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 100,
+  "ts": "2026-11-20T10:01:40.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "comptable",
+   "tour": 1,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "CON-A1",
+     "texte": "Le coût d'acquisition reste couvert par la marge unitaire.",
+     "appuis": [
+      "CPT-3",
+      "CPT-6"
+     ]
+    }
+   ],
+   "proposition": null,
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 101,
+  "ts": "2026-11-20T10:01:41.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "juriste",
+   "tour": 1,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "INV-A1",
+     "texte": "Un marché vaste n'efface pas l'obligation d'un contrat de sous-traitance.",
+     "appuis": [
+      "JUR-2",
+      "JUR-3"
+     ]
+    }
+   ],
+   "proposition": null,
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 102,
+  "ts": "2026-11-20T10:01:42.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "concurrent",
+   "tour": 1,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "INV-A1",
+     "texte": "Ton marché, je le prends vite avec les briques du marché.",
+     "appuis": [
+      "CON-4",
+      "CON-1"
+     ]
+    }
+   ],
+   "proposition": null,
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 103,
+  "ts": "2026-11-20T10:01:43.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "cliente",
+   "tour": 1,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "INV-A1",
+     "texte": "Je peux le faire moi-même le dimanche.",
+     "appuis": [
+      "CLI-3",
+      "CLI-1"
+     ]
+    }
+   ],
+   "proposition": null,
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 104,
+  "ts": "2026-11-20T10:01:44.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 105,
+  "ts": "2026-11-20T10:01:45.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 106,
+  "ts": "2026-11-20T10:01:46.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 107,
+  "ts": "2026-11-20T10:01:47.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 108,
+  "ts": "2026-11-20T10:01:48.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 109,
+  "ts": "2026-11-20T10:01:49.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 110,
+  "ts": "2026-11-20T10:01:50.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 111,
+  "ts": "2026-11-20T10:01:51.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 112,
+  "ts": "2026-11-20T10:01:52.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 113,
+  "ts": "2026-11-20T10:01:53.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 114,
+  "ts": "2026-11-20T10:01:54.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 115,
+  "ts": "2026-11-20T10:01:55.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 116,
+  "ts": "2026-11-20T10:01:56.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "recherche"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 117,
+  "ts": "2026-11-20T10:01:57.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "verification"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 118,
+  "ts": "2026-11-20T10:01:58.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 119,
+  "ts": "2026-11-20T10:01:59.000Z",
+  "type": "cost_update",
+  "usd": 0.300584,
+  "tokens_entree": 35387,
+  "tokens_sortie": 3981,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 120,
+  "ts": "2026-11-20T10:02:00.000Z",
+  "type": "cost_update",
+  "usd": 0.308674,
+  "tokens_entree": 38947,
+  "tokens_sortie": 4078,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 121,
+  "ts": "2026-11-20T10:02:01.000Z",
+  "type": "cost_update",
+  "usd": 0.317064,
+  "tokens_entree": 42622,
+  "tokens_sortie": 4182,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 122,
+  "ts": "2026-11-20T10:02:02.000Z",
+  "type": "cost_update",
+  "usd": 0.325204,
+  "tokens_entree": 46212,
+  "tokens_sortie": 4278,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 123,
+  "ts": "2026-11-20T10:02:03.000Z",
+  "type": "cost_update",
+  "usd": 0.33364,
+  "tokens_entree": 49945,
+  "tokens_sortie": 4375,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 124,
+  "ts": "2026-11-20T10:02:04.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "investisseur",
+   "tour": 2,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "CON-A2",
+     "texte": "La copie existe, mais l'accès aux restaurants équipés reste un fossé.",
+     "appuis": [
+      "INV-3",
+      "INV-2"
+     ]
+    }
+   ],
+   "proposition": {
+    "id": "INV-P1",
+    "champ": "cible",
+    "texte": "Viser d'abord les restaurants équipés d'une caisse connectée.",
+    "appuis": [
+     "INV-3",
+     "INV-2"
+    ]
+   },
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 125,
+  "ts": "2026-11-20T10:02:05.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "comptable",
+   "tour": 2,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "CLI-A1",
+     "texte": "La marge unitaire permet un prix d'entrée plus bas.",
+     "appuis": [
+      "CPT-3",
+      "CPT-8"
+     ]
+    }
+   ],
+   "proposition": {
+    "id": "CPT-P1",
+    "champ": "prix",
+    "texte": "Offrir un palier d'entrée sous le budget logiciel actuel.",
+    "appuis": [
+     "CPT-3",
+     "CPT-6"
+    ]
+   },
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 126,
+  "ts": "2026-11-20T10:02:06.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "juriste",
+   "tour": 2,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "CON-A2",
+     "texte": "Copier l'outil sans contrat de sous-traitance expose aussi le copieur.",
+     "appuis": [
+      "JUR-2",
+      "JUR-3"
+     ]
+    }
+   ],
+   "proposition": {
+    "id": "JUR-P1",
+    "champ": "offre",
+    "texte": "Livrer un contrat de sous-traitance des données avec l'abonnement.",
+    "appuis": [
+     "JUR-2",
+     "JUR-3"
+    ]
+   },
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 127,
+  "ts": "2026-11-20T10:02:07.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "concurrent",
+   "tour": 2,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "CPT-A1",
+     "texte": "Une marge confortable attire justement les copieurs.",
+     "appuis": [
+      "CON-1",
+      "CON-4"
+     ]
+    }
+   ],
+   "proposition": {
+    "id": "CON-P1",
+    "champ": "canal",
+    "texte": "S'adosser à un éditeur de caisse pour fermer l'accès.",
+    "appuis": [
+     "CON-3",
+     "CON-4"
+    ]
+   },
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 128,
+  "ts": "2026-11-20T10:02:08.000Z",
+  "type": "debate_reply",
+  "tour": {
+   "agent": "cliente",
+   "tour": 2,
+   "repliques": [
+    {
+     "type": "conteste",
+     "vise": "INV-A1",
+     "texte": "Un abonnement de plus, je n'en veux pas sans gain de couverts.",
+     "appuis": [
+      "CLI-2",
+      "CLI-1"
+     ]
+    }
+   ],
+   "proposition": {
+    "id": "CLI-P1",
+    "champ": "prix",
+    "texte": "Un prix d'entrée sous mon budget logiciel actuel.",
+    "appuis": [
+     "CLI-2",
+     "CLI-4"
+    ]
+   },
+   "nouvelles_affirmations": []
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 129,
+  "ts": "2026-11-20T10:02:09.000Z",
+  "type": "phase_started",
+  "phase": "P4"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 130,
+  "ts": "2026-11-20T10:02:10.000Z",
+  "type": "vote1_ouvert",
+  "notes": [
+   {
+    "agent": "investisseur",
+    "note": 6,
+    "verdict": "GO"
+   },
+   {
+    "agent": "comptable",
+    "note": 5.5,
+    "verdict": "PIVOT"
+   },
+   {
+    "agent": "juriste",
+    "note": 5,
+    "verdict": "PIVOT"
+   },
+   {
+    "agent": "concurrent",
+    "note": 4,
+    "verdict": "NO-GO"
+   },
+   {
+    "agent": "cliente",
+    "note": 3.5,
+    "verdict": "PIVOT"
+   }
+  ],
+  "moyenne": 4.8,
+  "ecart_type": 0.93
+ },
+ {
+  "trial_id": "demo",
+  "seq": 131,
+  "ts": "2026-11-20T10:02:11.000Z",
+  "type": "agent_status",
+  "agent": "juge",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 132,
+  "ts": "2026-11-20T10:02:12.000Z",
+  "type": "cost_update",
+  "usd": 0.374004,
+  "tokens_entree": 55871,
+  "tokens_sortie": 5208,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 133,
+  "ts": "2026-11-20T10:02:13.000Z",
+  "type": "ruling",
+  "ruling": {
+   "contradictions": [
+    {
+     "id": "JUG-C1",
+     "entre": [
+      "investisseur",
+      "cliente"
+     ],
+     "sujet": "Capacité des restaurateurs à payer l'abonnement",
+     "position_retenue": "cliente",
+     "attendu": "Attendu que la marge nette du secteur est faible et que le budget logiciel est déjà engagé,",
+     "appuis": [
+      "CLI-1",
+      "CLI-2"
+     ]
+    }
+   ],
+   "reponses_objections": [
+    {
+     "objection": "CON-A1",
+     "decision": "changement",
+     "justification": "La cible se resserre sur les restaurants équipés, où l'accès est un fossé.",
+     "appuis": [
+      "INV-3"
+     ]
+    },
+    {
+     "objection": "CON-A2",
+     "decision": "changement",
+     "justification": "La copie existe déjà ; le fossé se construit sur une cible précise et un contrat.",
+     "appuis": [
+      "CON-4"
+     ]
+    },
+    {
+     "objection": "CLI-A1",
+     "decision": "changement",
+     "justification": "Le prix d'entrée passe sous le budget logiciel actuel des restaurateurs.",
+     "appuis": [
+      "CLI-2"
+     ]
+    },
+    {
+     "objection": "CLI-O1",
+     "decision": "changement",
+     "justification": "Le prix d'entrée passe sous le budget logiciel actuel des restaurateurs.",
+     "appuis": [
+      "CLI-2"
+     ]
+    },
+    {
+     "objection": "CPT-A2",
+     "decision": "refus",
+     "justification": "Le coût d'acquisition reste supportable avec la marge unitaire calculée.",
+     "appuis": [
+      "CPT-6"
+     ]
+    }
+   ],
+   "plan_corrige": {
+    "changements": [
+     {
+      "champ": "prix",
+      "avant": "149 € par mois",
+      "apres": "79 € par mois",
+      "repond_a": [
+       "CLI-O1",
+       "CPT-A2"
+      ],
+      "source": "CLI-P1",
+      "justification": "Le prix d'entrée passe sous le budget logiciel actuel des restaurateurs.",
+      "appuis": [
+       "CLI-2",
+       "CLI-4"
+      ]
+     },
+     {
+      "champ": "cible",
+      "avant": "Restaurants indépendants à Lyon",
+      "apres": "Restaurants indépendants équipés d'une caisse connectée, à Lyon",
+      "repond_a": [
+       "CON-A1"
+      ],
+      "source": "INV-P1",
+      "justification": "Les restaurants équipés sont atteignables ; les autres demandent un travail manuel.",
+      "appuis": [
+       "INV-3",
+       "INV-2"
+      ]
+     },
+     {
+      "champ": "offre",
+      "avant": "Agents IA seuls",
+      "apres": "Agents IA avec contrat de sous-traitance des données",
+      "repond_a": [
+       "JUR-A1"
+      ],
+      "source": "JUR-P1",
+      "justification": "Le contrat répond au risque signalé sur les données personnelles.",
+      "appuis": [
+       "JUR-2",
+       "JUR-3"
+      ]
+     }
+    ],
+    "case_file_v2": {
+     "nom": "Brigade IA",
+     "cible": "Restaurants indépendants équipés d'une caisse connectée, à Lyon",
+     "probleme": "non précisé",
+     "probleme_origine": "non_precise",
+     "solution": "Agents IA avec contrat de sous-traitance des données, pour le restaurant",
+     "modele_revenu": "abonnement",
+     "prix": {
+      "montant": 79,
+      "devise": "EUR",
+      "periode": "mois",
+      "ht_ou_ttc": "inconnu",
+      "origine": "saisie"
+     },
+     "zone": "Lyon (Rhône), FR",
+     "pays": "FR",
+     "statut_identification": "aucune_trace",
+     "canal_presume": "non précisé",
+     "differenciation": null,
+     "hypotheses_implicites": [
+      "Le gérant perd du temps sur l'administratif",
+      "Le restaurateur a un smartphone ou un ordinateur"
+     ],
+     "affirmations_a_verifier": [],
+     "inconnues": [
+      "canal de distribution"
+     ],
+     "mots_retires": []
+    }
+   },
+   "conditions_pour_lancer": [
+    {
+     "condition": "Obtenir 9 restaurants pilotes payants avant tout budget d'acquisition",
+     "mesurable": true,
+     "appuis": [
+      "CPT-L10"
+     ]
+    }
+   ],
+   "par_ces_motifs": "Par ces motifs, le plan est corrigé comme indiqué ci-dessus ; les jurés sont invités à revoter."
+  }
+ },
+ {
+  "trial_id": "demo",
+  "seq": 134,
+  "ts": "2026-11-20T10:02:14.000Z",
+  "type": "phase_started",
+  "phase": "P5"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 135,
+  "ts": "2026-11-20T10:02:15.000Z",
+  "type": "agent_status",
+  "agent": "investisseur",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 136,
+  "ts": "2026-11-20T10:02:16.000Z",
+  "type": "agent_status",
+  "agent": "comptable",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 137,
+  "ts": "2026-11-20T10:02:17.000Z",
+  "type": "agent_status",
+  "agent": "juriste",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 138,
+  "ts": "2026-11-20T10:02:18.000Z",
+  "type": "agent_status",
+  "agent": "concurrent",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 139,
+  "ts": "2026-11-20T10:02:19.000Z",
+  "type": "agent_status",
+  "agent": "cliente",
+  "statut": "termine"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 140,
+  "ts": "2026-11-20T10:02:20.000Z",
+  "type": "cost_update",
+  "usd": 0.37881,
+  "tokens_entree": 57864,
+  "tokens_sortie": 5290,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 141,
+  "ts": "2026-11-20T10:02:21.000Z",
+  "type": "cost_update",
+  "usd": 0.38385,
+  "tokens_entree": 59994,
+  "tokens_sortie": 5368,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 142,
+  "ts": "2026-11-20T10:02:22.000Z",
+  "type": "cost_update",
+  "usd": 0.388702,
+  "tokens_entree": 62010,
+  "tokens_sortie": 5450,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 143,
+  "ts": "2026-11-20T10:02:23.000Z",
+  "type": "cost_update",
+  "usd": 0.393482,
+  "tokens_entree": 64015,
+  "tokens_sortie": 5527,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 144,
+  "ts": "2026-11-20T10:02:24.000Z",
+  "type": "cost_update",
+  "usd": 0.398358,
+  "tokens_entree": 66073,
+  "tokens_sortie": 5603,
+  "recherches": 19
+ },
+ {
+  "trial_id": "demo",
+  "seq": 145,
+  "ts": "2026-11-20T10:02:25.000Z",
+  "type": "revote",
+  "agent": "investisseur"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 146,
+  "ts": "2026-11-20T10:02:26.000Z",
+  "type": "revote",
+  "agent": "comptable"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 147,
+  "ts": "2026-11-20T10:02:27.000Z",
+  "type": "revote",
+  "agent": "juriste"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 148,
+  "ts": "2026-11-20T10:02:28.000Z",
+  "type": "revote",
+  "agent": "concurrent"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 149,
+  "ts": "2026-11-20T10:02:29.000Z",
+  "type": "revote",
+  "agent": "cliente"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 150,
+  "ts": "2026-11-20T10:02:30.000Z",
+  "type": "revote_ouvert",
+  "notes": [
+   {
+    "agent": "investisseur",
+    "note": 6.5,
+    "verdict": "GO"
+   },
+   {
+    "agent": "comptable",
+    "note": 6,
+    "verdict": "GO"
+   },
+   {
+    "agent": "juriste",
+    "note": 5.5,
+    "verdict": "PIVOT"
+   },
+   {
+    "agent": "concurrent",
+    "note": 5,
+    "verdict": "PIVOT"
+   },
+   {
+    "agent": "cliente",
+    "note": 5.5,
+    "verdict": "PIVOT"
+   }
+  ],
+  "moyenne": 5.7,
+  "ecart_type": 0.51
+ },
+ {
+  "trial_id": "demo",
+  "seq": 151,
+  "ts": "2026-11-20T10:02:31.000Z",
+  "type": "phase_started",
+  "phase": "P6"
+ },
+ {
+  "trial_id": "demo",
+  "seq": 152,
+  "ts": "2026-11-20T10:02:32.000Z",
+  "type": "verdict",
+  "note_avant": 4.8,
+  "note_apres": 5.7,
+  "verdict": "PIVOT",
+  "repartition": {
+   "GO": 2,
+   "PIVOT": 3,
+   "NO-GO": 0
+  },
+  "divergence": false,
+  "jury_divise": false,
+  "consensus_suspect": false,
+  "phrase": "Modifie ton plan.",
+  "texte_nadia": "Attendu que le jury, à 3 voix sur 5, rend le verdict PIVOT. Note finale : 5,7/10, contre 4,8/10 avant la correction du plan. Par ces motifs : Modifie ton plan."
+ }
+]

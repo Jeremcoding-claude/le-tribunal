@@ -674,7 +674,10 @@ export const TrialEvent = z.discriminatedUnion("type", [
   z.object({ ...base, type: z.literal("questions"), questions: z.array(Question) }),
   z.object({ ...base, type: z.literal("answers_received"), reponses: Reponses }),
   z.object({ ...base, type: z.literal("search_performed"), agent: agentOuJuge, requete: z.string(), domaines: z.array(z.string()) }),
-  z.object({ ...base, type: z.literal("source_verified"), agent: agentOuJuge, id: z.string(), domaine: z.string() }),
+  z.object({ ...base, type: z.literal("source_verified"), agent: agentOuJuge, id: z.string(), domaine: z.string(), url: z.string() }),
+  // Carte d'identification du Greffier (aucune donnée personnelle) et création de la Cliente : pour la salle d'audience.
+  z.object({ ...base, type: z.literal("identification"), statut: z.enum(["entreprise_existante", "homonymes", "aucune_trace"]), activite: z.string(), commune: z.string(), correspondances: z.number().int(), ecarts: z.array(z.string()) }),
+  z.object({ ...base, type: z.literal("cliente_creee"), prenom: z.string(), role: z.string(), ville: z.string() }),
   z.object({ ...base, type: z.literal("source_rejected"), agent: agentOuJuge, id: z.string(), raison: z.string() }),
   z.strictObject({ ...base, type: z.literal("vote_sealed"), agent: AgentJure }),
   z.object({ ...base, type: z.literal("vote1_ouvert"), notes: z.array(NoteOuverte).min(1), moyenne: z.number(), ecart_type: z.number() }),

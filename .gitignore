@@ -49,3 +49,5 @@ next-env.d.ts
 *.db-shm
 # plugin/bin/ n'est PAS ignoré : le marketplace installe le plugin depuis Git
 /data/
+# Fichier d instructions généré par `next dev` : pas le nôtre (les règles du projet sont dans CLAUDE.md)
+/AGENTS.md

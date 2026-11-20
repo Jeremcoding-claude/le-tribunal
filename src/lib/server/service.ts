@@ -150,13 +150,20 @@ export function creerService(o: OptionsService) {
       return pdf;
     },
 
+    /** « Mes audiences » : les procès enregistrés sur CE serveur (pas de comptes : une instance = une liste). */
+    lister() {
+      return stockage.listerTrials().map((t) => ({ id: t.id, idee: t.texte, statut: t.statut, creeLe: t.creeLe, enCours: actifs.has(t.id) }));
+    },
     evenementsApres: (id: string, seq: number) => stockage.evenementsApres(id, seq),
     trial: (id: string) => stockage.trial(id),
     estActif: (id: string) => actifs.has(id),
     /** Pour les tests : attend la fin de l'exécution en arrière-plan. */
     attendre: (id: string) => actifs.get(id) ?? Promise.resolve(),
-    supprimer(id: string) {
+    supprimer(id: string): "ok" | "inconnu" | "en_cours" {
+      if (!stockage.trial(id)) return "inconnu";
+      if (actifs.has(id)) return "en_cours";
       stockage.supprimerTrial(id);
+      return "ok";
     },
   };
 }
