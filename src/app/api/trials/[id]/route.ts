@@ -1,10 +1,8 @@
+import { protege } from "@/lib/server/acces";
 import { deleteTrial, getTrial } from "@/lib/server/handlers";
 import { obtenirService } from "@/lib/server/instance";
 
-export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
-  return getTrial((await params).id, obtenirService());
-}
+type Ctx = { params: Promise<{ id: string }> };
 
-export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
-  return deleteTrial((await params).id, obtenirService());
-}
+export const GET = protege(async (_req: Request, { params }: Ctx) => getTrial((await params).id, obtenirService()));
+export const DELETE = protege(async (_req: Request, { params }: Ctx) => deleteTrial((await params).id, obtenirService()));

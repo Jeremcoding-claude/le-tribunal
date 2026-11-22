@@ -1,0 +1,23 @@
+# Contexte de build : ni secrets, ni données, ni dépendances locales (plan §11.7). prompts/, fixtures/ et drizzle/ ne sont JAMAIS exclus.
+.env
+.env*
+!.env.example
+.tribunal
+.run
+data
+*.db
+*.db-wal
+*.db-shm
+node_modules
+.next
+.git
+.github
+.claude
+coverage
+tests
+docs
+plugin
+*.tsbuildinfo
+npm-debug.log*
+Dockerfile
+docker-compose.yml

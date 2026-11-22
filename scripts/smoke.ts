@@ -1,7 +1,7 @@
 // npm run smoke — UN vrai procès (payant, MANUEL) sur le cas de référence, en mode API. Il refuse de partir sans MOCK_MODE=false
 // et sans clé. Il vérifie : verdict produit, coût sous le plafond, aucun chiffre non sourcé dans le PDF ; il affiche le taux de
 // rejet par règle et signale toute règle au-dessus de GUARDRAILS.rejets.alerteParRegle.
-import { mkdirSync, writeFileSync } from "node:fs";
+import { appendFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { cleAnthropicPresente, GUARDRAILS } from "../src/lib/guardrails/config";
 import { creerClientReel } from "../src/lib/llm/client";
@@ -15,7 +15,7 @@ import { tauxDeRejet } from "../src/lib/trial/stats";
 const SAISIE = "Brigade IA, agents IA à 149 € par mois, restaurants indépendants, Lyon";
 
 async function main() {
-  if (GUARDRAILS.mock) throw new Error("npm run smoke est payant : lance-le avec MOCK_MODE=false (et ANTHROPIC_API_KEY définie).");
+  if (GUARDRAILS.mock) throw new Error("npm run smoke est payant : lance-le avec MOCK_MODE=false (avec ANTHROPIC_API_KEY et TRIBUNAL_ACCESS_TOKEN définis : le mode réel exige les deux).");
   if (!cleAnthropicPresente()) throw new Error("ANTHROPIC_API_KEY n'est pas définie.");
   const racine = join(process.cwd(), ".tribunal");
   const id = `smoke-${Date.now().toString(36)}`;
@@ -30,7 +30,12 @@ async function main() {
     mkdirSync(join(racine, id), { recursive: true });
     writeFileSync(join(racine, id, "rapport.pdf"), await genererPdf(r.etat));
   }
-  console.log(`Verdict : ${r.etat?.resultat?.verdictJury ?? "aucun"} · ${r.etat?.resultat?.phrase ?? ""}`);
+  // Coût mesuré : seuls les VRAIS procès sont enregistrés (lus par `npm run cost`).
+  if (cout > 0) {
+    const rejets = Object.fromEntries(tauxDeRejet(r.evenements).map((t) => [t.regle, t.taux]));
+    appendFileSync(join(racine, "couts.jsonl"), JSON.stringify({ id, date: new Date().toISOString().slice(0, 10), coutUsd: cout, parPhase: r.etat?.coutParPhase ?? {}, verdict: r.etat?.resultat?.verdictJury, rejets }) + "\n");
+  }
+  console.log(`Verdict :${r.etat?.resultat?.verdictJury ?? "aucun"} · ${r.etat?.resultat?.phrase ?? ""}`);
   console.log(`Notes : ${r.etat?.resultat?.noteAvant ?? "?"} vers ${r.etat?.resultat?.noteApres ?? "?"} / 10 · coût mesuré : ${cout} $ (plafond ${GUARDRAILS.budget.maxUsdPerTrial} $)`);
   console.log("Taux de rejet par règle :");
   for (const t of tauxDeRejet(r.evenements)) console.log(`  ${t.alerte ? "ALERTE" : "ok    "} ${t.regle} : ${t.rejets}/${t.total} (${Math.round(t.taux * 100)} %)`);

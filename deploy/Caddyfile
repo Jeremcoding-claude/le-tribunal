@@ -1,0 +1,7 @@
+# Caddy : HTTPS automatique. Remplacer tribunal.exemple.fr par votre domaine.
+tribunal.exemple.fr {
+	reverse_proxy 127.0.0.1:3000 {
+		# Flux SSE (salle d'audience) : aucune mise en mémoire tampon.
+		flush_interval -1
+	}
+}

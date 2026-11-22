@@ -27,7 +27,14 @@ describe("GUARDRAILS.mock", () => {
 
   it("ne vaut false que si MOCK_MODE=false", async () => {
     process.env.MOCK_MODE = "false";
-    expect((await chargerConfig()).mock).toBe(false);
+    process.env.ANTHROPIC_API_KEY = "cle-de-test-sans-valeur";
+    process.env.TRIBUNAL_ACCESS_TOKEN = "jeton-de-test-0123456789";
+    try {
+      expect((await chargerConfig()).mock).toBe(false);
+    } finally {
+      delete process.env.ANTHROPIC_API_KEY;
+      delete process.env.TRIBUNAL_ACCESS_TOKEN;
+    }
   });
 });
 

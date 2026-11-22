@@ -1,11 +1,12 @@
 // TOUTES les limites du Tribunal vivent ici (plan v3.0, section 5.1).
 // Un seuil ou une limite ne s'écrit nulle part ailleurs : on change cette valeur, le plan et les tests ensemble.
 //
-// // HYPOTHÈSE: `mock` lit process.env ici jusqu'à l'étape 12. À partir de l'étape 12, src/lib/env.ts
-// (validation Zod) est le seul endroit qui lit process.env, et ce fichier l'importe.
+// Depuis l etape 12, l environnement est lu et validé uniquement dans src/lib/env.ts ; ce fichier l importe.
+
+import { env } from "../env";
 
 export const GUARDRAILS = {
-  mock: process.env.MOCK_MODE !== "false", // true par défaut : zéro appel payant
+  mock: env().mock, // true par défaut : zéro appel payant
   models: {
     greffier: "claude-sonnet-5-5",
     jure: "claude-sonnet-5-5",
@@ -65,8 +66,8 @@ export const GUARDRAILS = {
 
 export type Guardrails = typeof GUARDRAILS;
 
-/** La clé API est-elle définie ? (jamais sa valeur : le SDK la lit lui-même). Étape 12 : déplacé dans src/lib/env.ts. */
-export const cleAnthropicPresente = (): boolean => Boolean(process.env.ANTHROPIC_API_KEY);
+/** La clé API est-elle définie ? (jamais sa valeur : le SDK la lit lui-même). */
+export const cleAnthropicPresente = (): boolean => env().cleApiPresente;
 
-/** Dossier des données (base SQLite, fichiers). Étape 12 : déplacé dans src/lib/env.ts (DATA_DIR). */
-export const dossierDonnees = (): string => process.env.DATA_DIR ?? "./data";
+/** Dossier des données (base SQLite, fichiers) : DATA_DIR. */
+export const dossierDonnees = (): string => env().dossierDonnees;

@@ -26,6 +26,10 @@ export default function Accueil() {
     setEnvoi(true);
     try {
       const res = await fetch("/api/trials", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ idee }) });
+      if (res.status === 401) {
+        router.push("/acces");
+        return;
+      }
       const j = (await res.json()) as { id?: string; erreur?: string };
       if (res.ok && j.id) router.push(`/audience/${j.id}`);
       else setErreur(j.erreur ?? "Le procès n'a pas pu s'ouvrir.");

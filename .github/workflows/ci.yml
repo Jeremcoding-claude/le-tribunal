@@ -1,0 +1,28 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    env:
+      MOCK_MODE: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aucune clé API en CI
+        run: |
+          if [ -n "${ANTHROPIC_API_KEY:-}" ]; then echo "ANTHROPIC_API_KEY est définie : la CI ne doit jamais avoir de clé." >&2; exit 1; fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm test
+      - name: Plugin à jour
+        run: npm run build:plugin -- --check --bundle

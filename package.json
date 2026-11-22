@@ -11,6 +11,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "smoke": "tsx scripts/smoke.ts",
+    "cost": "tsx scripts/cost.ts",
     "build:plugin": "tsx scripts/build-plugin.ts",
     "trial": "tsx src/cli/tribunal.ts"
   },

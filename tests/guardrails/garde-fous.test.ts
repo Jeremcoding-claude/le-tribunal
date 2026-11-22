@@ -213,9 +213,12 @@ describe("G8 · client-bundle et no-public-env", () => {
     for (const { f, t } of fichiers) expect(t, f).not.toContain("NEXT_PUBLIC_");
   });
 
-  it("process.env n'est lu que dans config.ts (jusqu'à l'étape 12) et .env* est ignoré par Git", () => {
+  it("process.env n'est lu que dans src/lib/env.ts (étape 12) et .env* est ignoré par Git", () => {
     const lecteurs = lireDossier(join(RACINE, "src")).filter(({ t }) => /process\.env/.test(t)).map(({ f }) => f.replace(/\\/g, "/").split("/src/")[1]);
-    expect(lecteurs).toEqual(["lib/guardrails/config.ts"]);
+    expect(lecteurs).toEqual(["instrumentation.ts", "lib/env.ts"]);
+    // l'unique exception : le motif documenté de Next.js, limité à NEXT_RUNTIME
+    const instr = readFileSync(join(RACINE, "src/instrumentation.ts"), "utf8").replace(/^\s*\/\/.*$/gm, "");
+    expect([...instr.matchAll(/process\.env\.(\w+)/g)].map((m) => m[1])).toEqual(["NEXT_RUNTIME"]);
     expect(readFileSync(join(RACINE, ".gitignore"), "utf8")).toMatch(/^\.env\*/m);
   });
 

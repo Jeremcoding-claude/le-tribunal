@@ -1,0 +1,22 @@
+# Un seul service, un seul volume (plan §11.4). Lancer : docker compose up -d --build
+services:
+  tribunal:
+    build: .
+    init: true
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PORT: "3000"
+      DATA_DIR: /data
+    ports:
+      - "127.0.0.1:${HOST_PORT:-3000}:3000"
+    volumes:
+      - tribunal-data:/data
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  tribunal-data:
