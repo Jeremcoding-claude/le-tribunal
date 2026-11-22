@@ -56,6 +56,15 @@ describe("G13 · .dockerignore", () => {
   });
 });
 
+describe("installation sans compilateur", () => {
+  it(".npmrc ignore les scripts (better-sqlite3 embarque ses binaires) et l'image le copie avant « npm ci »", () => {
+    expect(lire(".npmrc")).toMatch(/^ignore-scripts=true$/m);
+    const deps = dockerfile.slice(dockerfile.indexOf("AS deps"), dockerfile.indexOf("AS build"));
+    expect(deps).toContain(".npmrc");
+    expect(deps.indexOf(".npmrc")).toBeLessThan(deps.indexOf("npm ci"));
+  });
+});
+
 describe("G13 · .env.example", () => {
   it("clé et jeton vides, MOCK_MODE=true, pas de PORT, aucun secret", () => {
     expect(exemple).toMatch(/^ANTHROPIC_API_KEY=$/m);
