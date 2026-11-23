@@ -1,4 +1,5 @@
 {
+  "permissions": { "allow": ["WebSearch", "WebFetch", "Edit(.tribunal/**)"] },
   "hooks": {
     "SessionStart": [
       {
